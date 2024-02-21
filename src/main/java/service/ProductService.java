@@ -1,12 +1,6 @@
 package service;
 
-import models.Product;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
-@Repository
-public interface ProductService extends JpaRepository<Product, Long> {
+public interface ProductService {
 
 }

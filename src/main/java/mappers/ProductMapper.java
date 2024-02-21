@@ -1,7 +1,7 @@
 package mappers;
 
-import dtos.ProductRequesDto;
-import dtos.ProductResponseDto;
+import dtos.ProductDTO.ProductRequesDto;
+import dtos.ProductDTO.ProductResponseDto;
 import models.Product;
 import org.springframework.stereotype.Component;
 
@@ -14,12 +14,12 @@ public class ProductMapper {
      * pasamos de producto a ResponsDto*/
     public ProductResponseDto toResponse(Product product) {
         return new ProductResponseDto(
-                product.getId(),
                 product.getName(),
                 product.getDescription(),
-                product.getStartingPrice(),
-                product.getFinalPrice(),
-                product.getImage()
+                product.getStarting_price(),
+                product.getFinal_price(),
+                product.getImage(),
+                product.getCategory()
         );
     }
 
@@ -33,13 +33,13 @@ public class ProductMapper {
     public Product toModel(ProductRequesDto productRequesDto) {
 
         return new Product(
-                0L,
+                null,
                 productRequesDto.getName(),
                 productRequesDto.getDescription(),
-                productRequesDto.getStartingPrice(),
-                productRequesDto.getFinalPrice(),
-                productRequesDto.getImage()
-
+                productRequesDto.getStarting_price(),
+                productRequesDto.getFinal_price(),
+                productRequesDto.getImage(),
+                productRequesDto.getCategory()
         );
     }
 }
