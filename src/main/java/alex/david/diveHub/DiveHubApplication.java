@@ -8,6 +8,16 @@ public class DiveHubApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DiveHubApplication.class, args);
+		System.out.println("*******************************************************************************************************************************************************************************************");
+		System.out.println("*                                                                                                                                                      			                          *");
+		System.out.println("*                                                                                                                                                      			       			          *");
+		System.out.println("*                                                                                                                                                                           		      *");
+		System.out.println("*                                                                                   ¡BIENVENIDO!                                                                            		      *");
+		System.out.println("*                                                                                                                                                                           		      *");
+		System.out.println("*                                                                                                                                                      			            		      *");
+		System.out.println("*                                                                                                                                                                          			      *");
+		System.out.println("*******************************************************************************************************************************************************************************************");
+
 	}
 
 }
