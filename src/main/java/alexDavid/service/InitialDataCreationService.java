@@ -27,7 +27,8 @@ public class InitialDataCreationService {
                     faker.number().randomDouble(2, 50, 100),
                     faker.number().randomDouble(2, 50, 100),
                     faker.avatar().image(),
-                    category
+                    category,
+                    faker.commerce().department()
             );
             productService.save(product);
         }

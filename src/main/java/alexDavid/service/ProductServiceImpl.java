@@ -6,11 +6,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import alexDavid.repository.ProductRepository;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class ProductServiceImpl implements ProductService {
+public class    ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
 
@@ -39,5 +41,31 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.save(product);
     }
 
+    @Override
+    public List<Product> findProductsByTagIgnoreCase(String tag) {
+        return productRepository.findProductsByTagIgnoreCase(tag);
+    }
+
+    @Override
+    public List<Product> findByNameContains(String name) {
+        return productRepository.findByNameContains(name);
+    }
+
+  /*
+    @Override
+    public List<Product> findAllByOrderByFinal_priceDesc() {
+        return productRepository.findAllByOrderByFinal_price();
+    }
+
+ @Override
+    public List<Product> findAllByOrderByFinal_priceDesc() {
+
+        List<Product> products = findAll();
+       List<Product> sortedProducts = products.stream()
+               .sorted(Comparator.comparing(Product::getFinal_price).reversed())
+               .collect(Collectors.toList());
+        return sortedProducts;
+    }
+*/
 
 }

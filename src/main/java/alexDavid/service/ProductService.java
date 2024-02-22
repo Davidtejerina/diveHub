@@ -17,4 +17,9 @@ public interface ProductService {
     List<Product> findAll();
 
     Product save(Product product);
+
+    List<Product> findProductsByTagIgnoreCase(String tag);
+    List<Product> findByNameContains(String name);
+//    List<Product> findAllByOrderByFinal_priceDesc();
+
 }

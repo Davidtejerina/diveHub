@@ -21,8 +21,8 @@ public class Activity extends Product {
     // Constructors
     public Activity(Long id, String name, String description, Double starting_price, Double final_price,
                     String image, Category category, Integer level_required, LocalDateTime start,
-                    LocalDateTime end, Integer available_spaces, Boolean available) {
-        super(id, name, description, starting_price, final_price, image, category);
+                    LocalDateTime end, Integer available_spaces, Boolean available, String tag) {
+        super(id, name, description, starting_price, final_price, image, category, tag);
         this.level_required = level_required;
         this.time_starts = start;
         this.time_ends = end;

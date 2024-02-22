@@ -11,4 +11,5 @@ public class ProductRequesDto {
     private final Double final_price;
     private final String image;
     private final Category category;
+    private final String tag;
 }

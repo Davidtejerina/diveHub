@@ -22,11 +22,11 @@ public class DiveHubApplication {
 		System.out.println("********************************************************************************************************************************************************************************************************************");
 	}
 
-//	@Bean
-//	public CommandLineRunner init(InitialDataCreationService service) {
-//		return args -> {
-//			service.createFakeProducts(100);
-//		};
-//	}
+	@Bean
+	public CommandLineRunner init(InitialDataCreationService service) {
+		return args -> {
+			service.createFakeProducts(20);
+		};
+	}
 
 }

@@ -18,7 +18,8 @@ public class ProductMapper {
                 product.getStarting_price(),
                 product.getFinal_price(),
                 product.getImage(),
-                product.getCategory()
+                product.getCategory(),
+                product.getTag()
         );
     }
 
@@ -37,7 +38,8 @@ public class ProductMapper {
                 productRequesDto.getStarting_price(),
                 productRequesDto.getFinal_price(),
                 productRequesDto.getImage(),
-                productRequesDto.getCategory()
+                productRequesDto.getCategory(),
+                productRequesDto.getTag()
         );
     }
 }
