@@ -7,5 +7,5 @@ import org.springframework.stereotype.Service;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class ActivityServiceImpl implements ProductService {
+public class ActivityServiceImpl implements ActivityService {
 }
