@@ -1,13 +1,10 @@
-package dtos.ProductDTO;
+package alexDavid.dtos.ProductDTO;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import models.Category;
+import alexDavid.models.Category;
 
 @Data
-@AllArgsConstructor
-
-public class ProductResponseDto {
+public class ProductRequesDto {
     private final String name;
     private final String description;
     private final Double starting_price;

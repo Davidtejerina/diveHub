@@ -1,6 +1,6 @@
-package repository;
+package alexDavid.repository;
 
-import models.Activity;
+import alexDavid.models.Activity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

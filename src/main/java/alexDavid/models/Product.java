@@ -1,4 +1,4 @@
-package models;
+package alexDavid.models;
 
 
 import jakarta.persistence.*;

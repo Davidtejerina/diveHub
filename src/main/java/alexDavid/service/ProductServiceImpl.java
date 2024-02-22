@@ -1,16 +1,14 @@
-package service;
+package alexDavid.service;
 
+import alexDavid.models.Category;
+import alexDavid.models.Product;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import models.Category;
-import models.Product;
 import org.springframework.stereotype.Service;
-import repository.ProductRepository;
+import alexDavid.repository.ProductRepository;
 
 import java.util.List;
 
 @Service
-@Slf4j
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
 
@@ -34,6 +32,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> findAll() {
         return productRepository.findAll();
+    }
+
+    @Override
+    public Product save(Product product){
+        return productRepository.save(product);
     }
 
 

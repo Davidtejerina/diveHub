@@ -1,4 +1,4 @@
-package models;
+package alexDavid.models;
 
 
 import jakarta.persistence.*;
@@ -13,8 +13,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Activity extends Product {
     private Integer level_required;
-    private LocalDateTime start;
-    private LocalDateTime end;
+    private LocalDateTime time_starts;
+    private LocalDateTime time_ends;
     private Integer available_spaces;
     private Boolean available;
 
@@ -24,8 +24,8 @@ public class Activity extends Product {
                     LocalDateTime end, Integer available_spaces, Boolean available) {
         super(id, name, description, starting_price, final_price, image, category);
         this.level_required = level_required;
-        this.start = start;
-        this.end = end;
+        this.time_starts = start;
+        this.time_ends = end;
         this.available_spaces = available_spaces;
         this.available = available;
     }

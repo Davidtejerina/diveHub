@@ -1,8 +1,9 @@
-package service;
+package alexDavid.service;
 
 
-import models.Category;
-import models.Product;
+import alexDavid.models.Category;
+import alexDavid.models.Product;
+
 import java.util.List;
 
 public interface ProductService {
@@ -14,4 +15,6 @@ public interface ProductService {
     List<Product> findProductByCategory(Category category);
 
     List<Product> findAll();
+
+    Product save(Product product);
 }

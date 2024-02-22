@@ -1,8 +1,8 @@
-package mappers;
+package alexDavid.mappers;
 
-import dtos.ProductDTO.ProductRequesDto;
-import dtos.ProductDTO.ProductResponseDto;
-import models.Product;
+import alexDavid.dtos.ProductDTO.ProductRequesDto;
+import alexDavid.dtos.ProductDTO.ProductResponseDto;
+import alexDavid.models.Product;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -10,10 +10,9 @@ import java.util.List;
 @Component
 public class ProductMapper {
 
-    /*
-     * pasamos de producto a ResponsDto*/
     public ProductResponseDto toResponse(Product product) {
         return new ProductResponseDto(
+                product.getId(),
                 product.getName(),
                 product.getDescription(),
                 product.getStarting_price(),
@@ -31,7 +30,6 @@ public class ProductMapper {
     }
 
     public Product toModel(ProductRequesDto productRequesDto) {
-
         return new Product(
                 null,
                 productRequesDto.getName(),
