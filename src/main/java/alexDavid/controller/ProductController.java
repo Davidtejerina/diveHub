@@ -1,7 +1,9 @@
 package alexDavid.controller;
 
 
+import alexDavid.dtos.ProductDTO.ProductRequestDto;
 import alexDavid.dtos.ProductDTO.ProductResponseDto;
+import alexDavid.models.Product;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import alexDavid.mappers.ProductMapper;
@@ -73,12 +75,38 @@ public class ProductController {
                 productMapper.toResponse(productService.findAllByOrderByFinal_priceDesc())
         );
     }
+    @GetMapping("/price/ascending")
+    public ResponseEntity<List<ProductResponseDto>> getProductOrderByPriceAsc(){
+        return ResponseEntity.ok(productMapper.toResponse(productService.findAllByOrderByFinal_priceAsc()));
+    }
 
     @DeleteMapping("/delete/{id}")
     public void deleteById(
             @PathVariable Long id
     ) {
         productService.deleteProductById(id);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ProductResponseDto> putProduct(
+            @PathVariable Long id,
+            @RequestBody ProductRequestDto productRequestDto
+    ) {
+        log.info("putProduct");
+        Product productUpdated = productService.update(id, productMapper.toModel(productRequestDto));
+        return ResponseEntity.ok(
+                productMapper.toResponse(productUpdated));
+
+    }
+    @PostMapping
+    public ResponseEntity<ProductResponseDto> postProduct(
+            @RequestBody ProductRequestDto productRequestDto
+    ) {
+        log.info("addProduct");
+        Product productSaved = productService.save(productMapper.toModel(productRequestDto));
+        return ResponseEntity.created(null).body(
+                productMapper.toResponse(productSaved)
+        );
     }
 }
 
