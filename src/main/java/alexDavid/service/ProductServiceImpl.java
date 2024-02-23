@@ -72,4 +72,9 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> findAllByOrderByFinal_priceDesc() {
         return productRepository.findAllOrderByFinal_price();
     }
+
+    @Override
+    public List<Product> findAllByOrderByFinal_priceAsc() {
+        return productRepository.findAllOrderByFinal_priceAsc();
+    }
 }

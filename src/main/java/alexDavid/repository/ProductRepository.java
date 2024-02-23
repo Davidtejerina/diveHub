@@ -15,5 +15,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findByNameContainsIgnoreCase(String name);
     @Query("SELECT p FROM Product p ORDER BY p.final_price DESC")
     List<Product> findAllOrderByFinal_price();
+    @Query("SELECT p FROM Product p ORDER BY p.final_price ASC")
+    List<Product> findAllOrderByFinal_priceAsc();
+
 
 }

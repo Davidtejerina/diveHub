@@ -23,6 +23,8 @@ public interface ProductService {
     List<Product> findByNameContainsIgnoreCase(String name);
 
     List<Product> findAllByOrderByFinal_priceDesc();
+    List<Product> findAllByOrderByFinal_priceAsc();
+
 
     void deleteProductById(Long id);
 

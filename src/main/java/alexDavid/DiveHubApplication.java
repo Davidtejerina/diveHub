@@ -26,6 +26,7 @@ public class DiveHubApplication {
 	public CommandLineRunner init(InitialDataCreationService service) {
 		return args -> {
 			service.createFakeProducts(20);
+			service.createFakeActivity(20);
 		};
 	}
 
