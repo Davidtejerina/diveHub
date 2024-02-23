@@ -58,9 +58,11 @@ public class ProductController {
     @GetMapping("/name/{name}")
     public ResponseEntity<List<ProductResponseDto>> getProductContainsInName(
             @PathVariable String name) {
-        return ResponseEntity.ok(productMapper.toResponse(productService.findByNameContains(name))
+        return ResponseEntity.ok(productMapper.toResponse(productService.findByNameContainsIgnoreCase(name))
         );
     }
+
+
   /* @GetMapping("/price/descending")
     public ResponseEntity<List<ProductResponseDto>> getAllProductPriceDesc()
     {
@@ -71,7 +73,10 @@ public class ProductController {
         );
     }*/
 
-
+   @GetMapping("/delete/{id}")
+    public void deleteById(@PathVariable Long id) {
+        productService.deleteProductById(id);
+    }
 }
 
 

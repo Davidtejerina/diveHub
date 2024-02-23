@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class    ProductServiceImpl implements ProductService {
+public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
 
@@ -47,8 +47,27 @@ public class    ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> findByNameContains(String name) {
-        return productRepository.findByNameContains(name);
+    public List<Product> findByNameContainsIgnoreCase(String name) {
+        return productRepository.findByNameContainsIgnoreCase(name);
+    }
+
+    @Override
+    public void deleteProductById(Long id) {productRepository.deleteById(id);
+    }
+
+    @Override
+    public Product update(Long id, Product product) {
+        Product productUpdated = this.findById(id);
+
+        productUpdated.setName(product.getName());
+        productUpdated.setDescription(product.getDescription());
+        productUpdated.setStarting_price(productUpdated.getStarting_price());
+        productUpdated.setFinal_price(product.getFinal_price());
+        productUpdated.setImage(product.getImage());
+        productUpdated.setCategory(product.getCategory());
+        productUpdated.setTag(product.getTag());
+
+        return productRepository.save(productUpdated);
     }
 
   /*

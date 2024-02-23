@@ -19,7 +19,10 @@ public interface ProductService {
     Product save(Product product);
 
     List<Product> findProductsByTagIgnoreCase(String tag);
-    List<Product> findByNameContains(String name);
+    List<Product> findByNameContainsIgnoreCase(String name);
 //    List<Product> findAllByOrderByFinal_priceDesc();
+    void deleteProductById(Long id);
+
+    Product update (Long id, Product product);
 
 }
