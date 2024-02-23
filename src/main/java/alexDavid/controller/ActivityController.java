@@ -22,6 +22,7 @@ public class ActivityController {
     private final ActivityService activityService;
     private final ActivityMapper activityMapper;
 @GetMapping("")
+
     public ResponseEntity<List<ActivityResponseDto>> getAllActivies(
 
     ) {
