@@ -1,6 +1,6 @@
 package alexDavid.mappers;
 
-import alexDavid.dtos.ProductDTO.ProductRequesDto;
+import alexDavid.dtos.ProductDTO.ProductRequestDto;
 import alexDavid.dtos.ProductDTO.ProductResponseDto;
 import alexDavid.models.Product;
 import org.springframework.stereotype.Component;
@@ -30,7 +30,7 @@ public class ProductMapper {
                 toList();
     }
 
-    public Product toModel(ProductRequesDto productRequesDto) {
+    public Product toModel(ProductRequestDto productRequesDto) {
         return new Product(
                 null,
                 productRequesDto.getName(),

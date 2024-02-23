@@ -16,7 +16,6 @@ public class Product {
     private String name;
     private String description;
     private Double starting_price;
-
     private Double final_price;
     private String image;
     private Category category;

@@ -15,7 +15,6 @@ import java.util.List;
 @RequestMapping("/divehub/products")
 @RequiredArgsConstructor
 @Slf4j
-
 public class ProductController {
 
     private final ProductService productService;
@@ -23,7 +22,8 @@ public class ProductController {
 
 
     @GetMapping
-    public ResponseEntity<List<ProductResponseDto>> getAllProducts() {
+    public ResponseEntity<List<ProductResponseDto>> getAllProducts(
+    ) {
 
         log.info("getAllProducts");
 
@@ -43,38 +43,41 @@ public class ProductController {
     }
 
     @GetMapping("/tag/{tag}")
-    public ResponseEntity<List<ProductResponseDto>> getByTag(
-            @PathVariable String tag) {
+    public ResponseEntity<List<ProductResponseDto>> getProductByTag(
+            @PathVariable String tag
+    ) {
         log.info("getProductsByTag");
-        if (tag.isBlank()) return ResponseEntity.badRequest().build();
         return ResponseEntity.ok(
                 productMapper.toResponse(productService.findProductsByTagIgnoreCase(tag))
         );
     }
 
+
     /*
-    * Método que te devuelve un producto si en su nombre contiente una palabra.
+    * Método que te devuelve un producto si en su nombre contiene una palabra/letra.
     */
     @GetMapping("/name/{name}")
     public ResponseEntity<List<ProductResponseDto>> getProductContainsInName(
-            @PathVariable String name) {
-        return ResponseEntity.ok(productMapper.toResponse(productService.findByNameContainsIgnoreCase(name))
+            @PathVariable String name
+    ) {
+        return ResponseEntity.ok(
+                productMapper.toResponse(productService.findByNameContainsIgnoreCase(name))
         );
     }
 
 
-  /* @GetMapping("/price/descending")
-    public ResponseEntity<List<ProductResponseDto>> getAllProductPriceDesc()
-    {
-
+    @GetMapping("/price/descending")
+    public ResponseEntity<List<ProductResponseDto>> getProductOrderByPrice(
+    ) {
         return ResponseEntity.ok(
                 productMapper.toResponse(productService.findAllByOrderByFinal_priceDesc())
-
         );
-    }*/
+    }
 
-   @GetMapping("/delete/{id}")
-    public void deleteById(@PathVariable Long id) {
+    @DeleteMapping("/delete/{id}")
+    public void deleteById(
+            @PathVariable Long id
+    ) {
         productService.deleteProductById(id);
     }
 }

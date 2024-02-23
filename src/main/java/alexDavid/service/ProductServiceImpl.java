@@ -5,10 +5,7 @@ import alexDavid.models.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import alexDavid.repository.ProductRepository;
-
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -18,7 +15,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product findById(Long id) {
-        return productRepository.findById(id).orElseThrow();
+        return productRepository.findById(id).get();
     }
 
     @Override
@@ -28,7 +25,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> findProductByCategory(Category category) {
-        return productRepository.findProductByCategory(category);
+        return productRepository.findProductsByCategory(category);
     }
 
     @Override
@@ -70,21 +67,9 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.save(productUpdated);
     }
 
-  /*
+
     @Override
     public List<Product> findAllByOrderByFinal_priceDesc() {
-        return productRepository.findAllByOrderByFinal_price();
+        return productRepository.findAllOrderByFinal_price();
     }
-
- @Override
-    public List<Product> findAllByOrderByFinal_priceDesc() {
-
-        List<Product> products = findAll();
-       List<Product> sortedProducts = products.stream()
-               .sorted(Comparator.comparing(Product::getFinal_price).reversed())
-               .collect(Collectors.toList());
-        return sortedProducts;
-    }
-*/
-
 }
