@@ -8,13 +8,12 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
+
 @Data
 @NoArgsConstructor(force = true) // Para que no me de error en el constructor de jackson
 @RequiredArgsConstructor // Para que me cree un constructor con los atributos finales
 @Builder
-
-public class ActivityResponseDto {
-    private final Long id;
+public class ActivityRequestDto {
     private final String name;
     private final String description;
     private final Double starting_price;

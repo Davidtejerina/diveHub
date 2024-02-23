@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 import alexDavid.service.ActivityService;
 import alexDavid.mappers.ActivityMapper;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -22,7 +25,7 @@ public class ActivityController {
     private final ActivityService activityService;
     private final ActivityMapper activityMapper;
 
-    @GetMapping("")
+    @GetMapping
     public ResponseEntity<List<ActivityResponseDto>> getAllActivities(
 
     ) {
@@ -41,5 +44,19 @@ public class ActivityController {
 
     }
 
+    @GetMapping("/available_spaces/{id}")
+    public ResponseEntity<Integer> getAllAvailable_spacesByActivityId(
+            @PathVariable Long id
+    ){
+        log.info("getAllAvailable_spacesByActivityId");
+        return ResponseEntity.ok(activityService.findById(id).getAvailable_spaces());
+    }
 
+    @GetMapping("/remaining-time/{id}")
+    public ResponseEntity<Duration> getRemainingTimeByActivityId(
+            @PathVariable Long id
+    ){
+        log.info("getTimeRemainingByActivityId");
+        return ResponseEntity.ok(activityService.getRemainingTime(id)); //en horas
+    }
 }

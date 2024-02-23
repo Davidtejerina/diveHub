@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -22,12 +24,23 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public void save(Activity activity) {
-       activityRepository.save(activity);
+    public Activity findById(Long id) {
+        return activityRepository.findById(id).get();
+    }
+
+    @Override
+    public Activity save(Activity activity) {
+       return activityRepository.save(activity);
     }
 
     @Override
     public List<Activity> findByAvailable() {
         return activityRepository.findAllByAvailable(true);
+    }
+
+    @Override
+    public Duration getRemainingTime(Long id){
+        Activity activity = activityRepository.findById(id).get();
+        return Duration.between(activity.getTime_starts(), activity.getTime_ends());
     }
 }

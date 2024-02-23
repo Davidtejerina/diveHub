@@ -7,7 +7,5 @@ import java.util.List;
 
 
 public interface ActivityRepository extends JpaRepository<Activity, Long> {
-
-    List<Activity> findAllBy();
     List<Activity> findAllByAvailable(Boolean available);
 }

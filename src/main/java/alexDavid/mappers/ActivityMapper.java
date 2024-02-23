@@ -13,7 +13,7 @@ import java.util.List;
 public class ActivityMapper {
 
     public ActivityResponseDto toResponse(Activity activity){
-        return  new ActivityResponseDto(
+        return new ActivityResponseDto(
                 activity.getId(),
                 activity.getName(),
                 activity.getDescription(),
