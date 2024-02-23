@@ -77,8 +77,7 @@ public class ProductController {
     }
     @GetMapping("/price/ascending")
     public ResponseEntity<List<ProductResponseDto>> getProductOrderByPriceAsc(){
-        return  ResponseEntity.ok(productMapper.toResponse(productService.findAllByOrderByFinal_priceAsc())
-        );
+        return ResponseEntity.ok(productMapper.toResponse(productService.findAllByOrderByFinal_priceAsc()));
     }
 
     @DeleteMapping("/delete/{id}")
