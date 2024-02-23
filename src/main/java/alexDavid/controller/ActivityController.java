@@ -21,17 +21,25 @@ import java.util.List;
 public class ActivityController {
     private final ActivityService activityService;
     private final ActivityMapper activityMapper;
-@GetMapping("")
 
-    public ResponseEntity<List<ActivityResponseDto>> getAllActivies(
+    @GetMapping("")
+    public ResponseEntity<List<ActivityResponseDto>> getAllActivities(
 
     ) {
-        log.info("getAllProducts");
+        log.info("getAllActivities");
         return ResponseEntity.ok(
                 activityMapper.toResponse(activityService.findAll())
         );
     }
 
+    @GetMapping("/available")
+    public ResponseEntity<List<ActivityResponseDto>> getAllAvailableActivities(
+    ){
+        log.info("getAllAvailableActivities");
+        return ResponseEntity.ok(activityMapper.toResponse(activityService.findByAvailable())
+        );
+
+    }
 
 
 }

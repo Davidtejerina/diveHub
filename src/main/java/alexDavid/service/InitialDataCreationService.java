@@ -41,7 +41,7 @@ public class InitialDataCreationService {
     }
 
 
-    public Activity createFakeActivity(int numberOfActivities) {
+    public  Activity createFakeActivity(int numberOfActivities) {
         if (numberOfActivities <= 0) return null;
 
         for (int i = 0; i < numberOfActivities; i++) {
@@ -58,11 +58,11 @@ public class InitialDataCreationService {
                     product.getFinal_price(),
                     product.getImage(),
                     product.getCategory(),
-                    faker.number().randomDigit(), // level_required
-                    LocalDateTime.now(), // time_starts
-                    LocalDateTime.now(), // time_ends
-                    faker.number().randomDigit(), // available_spaces
-                    faker.bool().bool(), // available
+                    faker.number().randomDigit(),
+                    LocalDateTime.now(),
+                    LocalDateTime.now(),
+                    faker.number().randomDigit(),
+                    faker.bool().bool(),
                     product.getTag()
             );
             activityService.save(activity);

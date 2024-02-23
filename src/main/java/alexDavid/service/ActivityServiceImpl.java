@@ -25,4 +25,9 @@ public class ActivityServiceImpl implements ActivityService {
     public void save(Activity activity) {
        activityRepository.save(activity);
     }
+
+    @Override
+    public List<Activity> findByAvailable() {
+        return activityRepository.findAllByAvailable(true);
+    }
 }

@@ -8,4 +8,5 @@ public interface ActivityService {
 
     List<Activity> findAll();
     void save(Activity activity);
+    List<Activity> findByAvailable();
 }
