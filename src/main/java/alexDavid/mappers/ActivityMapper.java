@@ -1,9 +1,13 @@
 package alexDavid.mappers;
 
 import alexDavid.dtos.ActivityDTO.ActivityResponseDto;
+import alexDavid.dtos.ProductDTO.ProductResponseDto;
 import alexDavid.models.Activity;
+import alexDavid.models.Product;
 import org.springframework.stereotype.Component;
 import alexDavid.dtos.ActivityDTO.ActivityResponseDto;
+
+import java.util.List;
 
 @Component
 public class ActivityMapper {
@@ -24,5 +28,10 @@ public class ActivityMapper {
                 activity.getAvailable_spaces(),
                 activity.getAvailable()
         );
+    }
+    public List<ActivityResponseDto> toResponse(List<Activity> activities) {
+        return activities.stream().
+                map(this::toResponse).
+                toList();
     }
 }
