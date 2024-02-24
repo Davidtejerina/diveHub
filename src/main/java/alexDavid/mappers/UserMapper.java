@@ -1,7 +1,7 @@
 package alexDavid.mappers;
 
 import alexDavid.dtos.UserDto.UserResponseDto;
-import alexDavid.models.User;
+import alexDavid.models.User.User;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -19,10 +19,7 @@ public class UserMapper {
                 user.getLevel(),
                 user.getRegistration_date(),
                 user.getLast_login(),
-                user.getCookie(),
-                user.getCookie_expiration(),
                 user.getRole()
-
         );
     }
     public User toModel(UserResponseDto userDto){
@@ -38,8 +35,6 @@ public class UserMapper {
                 userDto.getLevel(),
                 userDto.getRegistration_date(),
                 userDto.getLast_login(),
-                userDto.getCookie(),
-                userDto.getCookie_expiration(),
                 userDto.getRole()
         );
     }

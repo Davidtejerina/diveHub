@@ -1,5 +1,7 @@
 package alexDavid.dtos.UserDto;
 
+import alexDavid.models.Level;
+import alexDavid.models.User.Role;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,10 +21,8 @@ public class UserRequestDto {
     private final String email;
     private final LocalDateTime birthday;
     private final String address;
-    private final Integer level;
+    private final Level level;
     private final LocalDateTime registration_date;
     private final LocalDateTime last_login;
-    private final Long cookie;
-    private final LocalDateTime cookie_expiration;
-    private final Integer role;
+    private final Role role;
 }

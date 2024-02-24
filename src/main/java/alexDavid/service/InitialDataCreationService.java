@@ -3,9 +3,13 @@ package alexDavid.service;
 import alexDavid.models.Activity;
 import alexDavid.models.Category;
 import alexDavid.models.Level;
+import alexDavid.models.User.User;
 import lombok.RequiredArgsConstructor;
 import alexDavid.models.Product;
+import lombok.extern.slf4j.Slf4j;
 import net.datafaker.Faker;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -15,11 +19,13 @@ import java.util.concurrent.TimeUnit;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class InitialDataCreationService {
     private final ProductService productService;
     private final ActivityService activityService;
     private final Faker faker = new Faker(new Locale("en-US"));
-
+    private final PasswordEncoder passwordEncoder;
+    private final UserDetailsServiceImpl userDetailsService;
     public void createFakeProducts(int number) {
         if (number <= 0) return;
 
@@ -67,5 +73,14 @@ public class InitialDataCreationService {
                 product.getTag()
         );
         activityService.save(activity);
+    }
+
+    public void createFakeUser(){
+        String password = passwordEncoder.encode("hola");
+        User user= new User(
+                "a", password
+        );
+        log.info(String.valueOf(user));
+        userDetailsService.save(user);
     }
 }
