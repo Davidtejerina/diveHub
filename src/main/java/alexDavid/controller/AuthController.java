@@ -33,10 +33,12 @@ public class AuthController {
             @RequestBody LoginRequest loginRequest
     ) {
         log.info("hola1");
+        log.info("Detalles de autenticación - Usuario: {}, Contraseña: {}", loginRequest.getEmail(), loginRequest.getPassword());
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                     loginRequest.getEmail(),
                     loginRequest.getPassword()
+
             ));
 
             log.info("Autenticación exitosa");

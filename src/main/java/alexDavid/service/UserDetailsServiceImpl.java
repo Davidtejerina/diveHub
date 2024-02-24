@@ -27,6 +27,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return userDetailsRepository.findByEmail(email);
     }
 
+    public User loadUserByUserEmail(String email){
+        return userDetailsRepository.findByEmail(email);
+    }
     public User save(User user) {
         return userDetailsRepository.save(user);
     }
@@ -58,5 +61,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         );
         return this.save(user);
     }
+
 
 }
