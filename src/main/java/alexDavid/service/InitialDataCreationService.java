@@ -76,11 +76,7 @@ public class InitialDataCreationService {
     }
 
     public void createFakeUser(){
-        String password = passwordEncoder.encode("hola");
-        User user= new User(
-                "a", password
-        );
-        log.info(String.valueOf(user));
+        User user = new User("user", "$2a$12$K4tojeaYWMK55KzWzDWtLOuuUjRTkycWhSGHYWA2LXMZqmZUtuXPO"); // Esto es "password" codificado con bcrypt)
         userDetailsService.save(user);
     }
 }

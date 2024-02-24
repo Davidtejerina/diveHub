@@ -1,10 +1,7 @@
 package alexDavid.Auth;
 
 
-import alexDavid.models.Level;
-import jakarta.persistence.Column;
 import lombok.Data;
-
 import java.time.LocalDateTime;
 
 @Data

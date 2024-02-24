@@ -6,10 +6,12 @@ import alexDavid.Auth.SignupRequest;
 import alexDavid.models.User.User;
 import alexDavid.service.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +21,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/divehub/auth")
+@Slf4j
 public class AuthController {
 
     private final JwtService jwtService;
@@ -26,16 +29,25 @@ public class AuthController {
     private final UserDetailsServiceImpl userDetailsService;
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<?> login(
+            @RequestBody LoginRequest loginRequest
+    ) {
+        log.info("hola1");
+        try {
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+                    loginRequest.getEmail(),
+                    loginRequest.getPassword()
+            ));
 
-                authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                        loginRequest.getEmail(),
-                        loginRequest.getPassword()
-                ));
-        return ResponseEntity.ok(Map.of("token",
-                jwtService.createToken(loginRequest.getEmail()
-                ))
-        );
+            log.info("Autenticación exitosa");
+
+            return ResponseEntity.ok(Map.of("token",
+                    jwtService.createToken(loginRequest.getEmail())
+            ));
+        } catch (AuthenticationException e) {
+            log.error("Error de autenticación: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Error de autenticación: " + e.getMessage());
+        }
     }
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody SignupRequest signupRequest) {

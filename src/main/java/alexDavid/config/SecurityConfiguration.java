@@ -4,16 +4,15 @@ package alexDavid.config;
 import alexDavid.Auth.JwtAuthenticationFilter;
 import alexDavid.repository.UserDetailsRepository;
 import alexDavid.service.UserDetailsServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.*;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -25,25 +24,23 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
+
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
+@RequiredArgsConstructor
 public class SecurityConfiguration {
 
     private final UserDetailsRepository userDetailsRepository;
-
-    public SecurityConfiguration(UserDetailsRepository userDetailsRepository) {
-        this.userDetailsRepository = userDetailsRepository;
-    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http, MvcRequestMatcher.Builder mvc) throws Exception {
         RequestMatcher h2ConsoleMatcher = new AntPathRequestMatcher("/h2-console/**");
         http
-                .csrf(AbstractHttpConfigurer::disable)
+                .csrf(csrf -> csrf.disable())
                 .cors()  // Aunque de deprecated, lo sigue cogiendo y permite la comunicacion cruzada entre distintos dominios,
-                // Cosa que normalmente esta prohibido ya que dos dominios no pueden comunicarse pero al tener /api/auth y /api/categories
-                // Queremos que se comuniquen.
+                            // Cosa que normalmente esta prohibido ya que dos dominios no pueden comunicarse pero al tener /api/auth y /api/categories
+                            // Queremos que se comuniquen.
                 .and()
                 .headers().frameOptions().disable() // Deshabilitar frameOptions para permitir la consola H2
                 .and()
