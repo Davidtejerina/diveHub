@@ -1,7 +1,5 @@
 package alexDavid.dtos.UserDto;
 
-import alexDavid.models.Level;
-import alexDavid.models.User.Role;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +11,6 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 @Builder
 public class UserRequestDto {
-
     private final String nickname;
     private final String password;
     private final String name;

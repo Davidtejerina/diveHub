@@ -5,6 +5,8 @@ import alexDavid.dtos.UserDto.UserResponseDto;
 import alexDavid.models.User.User;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class UserMapper {
     public UserResponseDto toResponse(User user) {
@@ -23,6 +25,12 @@ public class UserMapper {
                 user.getRole()
         );
     }
+
+    public List<UserResponseDto> toResponse(List<User> user) {
+        return user.stream() .map(this::toResponse) .toList();
+    }
+
+
     public User toModel(UserRequestDto userDto){
         return new User(
                 null,

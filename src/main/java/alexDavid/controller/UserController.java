@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/divehub/user")
 @RequiredArgsConstructor
@@ -16,6 +18,14 @@ public class UserController {
 
     private final UserDetailsServiceImpl userService;
     private final UserMapper userMapper;
+
+
+    @GetMapping
+    public ResponseEntity<List<UserResponseDto>> getAllUser(
+    ) {
+        return ResponseEntity.ok(userMapper.toResponse(userService.getAllUsers()));
+    }
+
 
     @GetMapping("/{email}")
     public ResponseEntity<UserResponseDto> getUser(

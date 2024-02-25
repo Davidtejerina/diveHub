@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @Primary
@@ -25,6 +26,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         return userDetailsRepository.findByEmail(email);
+    }
+
+    public List<User> getAllUsers(){
+        return userDetailsRepository.findAll();
     }
 
     public User loadUserByUserEmail(String email){
@@ -71,5 +76,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public void updateLogin(String email) {
         User user = userDetailsRepository.findByEmail(email);
         user.setLast_login(LocalDateTime.now());
+    }
+
+
+    public boolean existUser(String email){
+        return userDetailsRepository.existsByEmail(email);
     }
 }
