@@ -32,24 +32,15 @@ public class AuthController {
     public ResponseEntity<?> login(
             @RequestBody LoginRequest loginRequest
     ) {
-        log.info("hola1");
-        log.info("Detalles de autenticación - Usuario: {}, Contraseña: {}", loginRequest.getEmail(), loginRequest.getPassword());
-        try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                    loginRequest.getEmail(),
-                    loginRequest.getPassword()
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+                loginRequest.getEmail(),
+                loginRequest.getPassword()
 
-            ));
+        ));
 
-            log.info("Autenticación exitosa");
-
-            return ResponseEntity.ok(Map.of("token",
-                    jwtService.createToken(loginRequest.getEmail())
-            ));
-        } catch (AuthenticationException e) {
-            log.error("Error de autenticación: " + e.getMessage());
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Error de autenticación: " + e.getMessage());
-        }
+        return ResponseEntity.ok(Map.of("token",
+                jwtService.createToken(loginRequest.getEmail())
+        ));
     }
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody SignupRequest signupRequest) {

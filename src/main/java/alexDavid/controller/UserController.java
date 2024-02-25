@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/divehub/user")
-@CrossOrigin                        // PERMITE EL INTERCAMBIO ENTRE BACKEND Y FRONTEND PUERTO DE ANGULAR
 @RequiredArgsConstructor
 public class UserController {
 
@@ -41,9 +40,6 @@ public class UserController {
             return ResponseEntity.ok(userMapper.toResponse(userService.updateUser(email, userMapper.toModel(user))));
         }
     }
-
-
-
 }
 
 */

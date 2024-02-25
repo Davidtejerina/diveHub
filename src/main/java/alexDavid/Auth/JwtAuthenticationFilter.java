@@ -39,7 +39,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
             try {
                 Algorithm algorithm = Algorithm.HMAC256(jwtSecretKey);
                 JWTVerifier verifier = JWT.require(algorithm)
-                        .withIssuer("diveHub")
+                        .withIssuer("divehub")
                         .build();
                 decodedJWT = verifier.verify(token);
 

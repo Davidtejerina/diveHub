@@ -30,12 +30,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public User loadUserByUserEmail(String email){
         return userDetailsRepository.findByEmail(email);
     }
+
     public User save(User user) {
         return userDetailsRepository.save(user);
     }
 
     public User updateUser(String email, User user) {
-
         User userUpdated = (User) this.loadUserByUsername(email);
         userUpdated.setName(user.getName());
         userUpdated.setSurnames(user.getSurnames());
