@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/divehub/products")
 @RequiredArgsConstructor
-@Slf4j
+
 public class ProductController {
 
     private final ProductService productService;
@@ -26,9 +26,6 @@ public class ProductController {
     @GetMapping
     public ResponseEntity<List<ProductResponseDto>> getAllProducts(
     ) {
-
-        log.info("getAllProducts");
-
         return ResponseEntity.ok(
                 productMapper.toResponse(productService.findAll())
         );
@@ -38,7 +35,6 @@ public class ProductController {
     public ResponseEntity<ProductResponseDto> getProductById(
             @PathVariable Long id
     ) {
-        log.info("getProductById");
         return ResponseEntity.ok(
                 productMapper.toResponse(productService.findById(id))
         );
@@ -48,7 +44,6 @@ public class ProductController {
     public ResponseEntity<List<ProductResponseDto>> getProductByTag(
             @PathVariable String tag
     ) {
-        log.info("getProductsByTag");
         return ResponseEntity.ok(
                 productMapper.toResponse(productService.findProductsByTagIgnoreCase(tag))
         );
@@ -79,7 +74,25 @@ public class ProductController {
     public ResponseEntity<List<ProductResponseDto>> getProductOrderByPriceAsc(){
         return ResponseEntity.ok(productMapper.toResponse(productService.findAllByOrderByFinal_priceAsc()));
     }
+    @PostMapping
+    public ResponseEntity<ProductResponseDto> postProduct(
+            @RequestBody ProductRequestDto productRequestDto
+    ) {
+        Product productSaved = productService.save(productMapper.toModel(productRequestDto));
+        return ResponseEntity.created(null).body(
+                productMapper.toResponse(productSaved)
+        );
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<ProductResponseDto> putProduct(
+            @PathVariable Long id,
+            @RequestBody ProductRequestDto productRequestDto
+    ) {
+        Product productUpdated = productService.update(id, productMapper.toModel(productRequestDto));
+        return ResponseEntity.ok(
+                productMapper.toResponse(productUpdated));
 
+    }
     @DeleteMapping("/delete/{id}")
     public void deleteById(
             @PathVariable Long id
@@ -87,27 +100,8 @@ public class ProductController {
         productService.deleteProductById(id);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<ProductResponseDto> putProduct(
-            @PathVariable Long id,
-            @RequestBody ProductRequestDto productRequestDto
-    ) {
-        log.info("putProduct");
-        Product productUpdated = productService.update(id, productMapper.toModel(productRequestDto));
-        return ResponseEntity.ok(
-                productMapper.toResponse(productUpdated));
 
-    }
-    @PostMapping
-    public ResponseEntity<ProductResponseDto> postProduct(
-            @RequestBody ProductRequestDto productRequestDto
-    ) {
-        log.info("addProduct");
-        Product productSaved = productService.save(productMapper.toModel(productRequestDto));
-        return ResponseEntity.created(null).body(
-                productMapper.toResponse(productSaved)
-        );
-    }
+
 }
 
 

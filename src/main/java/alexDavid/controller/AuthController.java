@@ -35,9 +35,8 @@ public class AuthController {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 loginRequest.getEmail(),
                 loginRequest.getPassword()
-
         ));
-
+        userDetailsService.updateLogin(loginRequest.getEmail());
         return ResponseEntity.ok(Map.of("token",
                 jwtService.createToken(loginRequest.getEmail())
         ));
@@ -46,7 +45,6 @@ public class AuthController {
     public ResponseEntity<?> signup(@RequestBody SignupRequest signupRequest) {
 //        if(userDetailsService)
         User user= userDetailsService.create(signupRequest);
-
         return ResponseEntity.ok(Map.of("token",
                 jwtService.createToken(user.getEmail()
                 ))

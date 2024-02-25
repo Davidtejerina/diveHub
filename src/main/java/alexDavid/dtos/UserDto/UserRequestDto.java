@@ -21,8 +21,4 @@ public class UserRequestDto {
     private final String email;
     private final LocalDateTime birthday;
     private final String address;
-    private final Level level;
-    private final LocalDateTime registration_date;
-    private final LocalDateTime last_login;
-    private final Role role;
 }

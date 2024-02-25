@@ -39,10 +39,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         User userUpdated = (User) this.loadUserByUsername(email);
         userUpdated.setName(user.getName());
         userUpdated.setSurnames(user.getSurnames());
+        userUpdated.setNickname(user.getNickname());
+        userUpdated.setBirthday(user.getBirthday());
+        userUpdated.setAddress(user.getAddress());
+        userUpdated.setLevel(user.getLevel());
+        userUpdated.setLast_login(user.getLast_login());
         userDetailsRepository.save(userUpdated);
         return userUpdated;
     }
-
 
 
     public User create(SignupRequest signupRequest){
@@ -64,4 +68,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
 
+    public void updateLogin(String email) {
+        User user = userDetailsRepository.findByEmail(email);
+        user.setLast_login(LocalDateTime.now());
+    }
 }

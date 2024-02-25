@@ -24,7 +24,6 @@ public class InitialDataCreationService {
     private final ProductService productService;
     private final ActivityService activityService;
     private final Faker faker = new Faker(new Locale("en-US"));
-    private final PasswordEncoder passwordEncoder;
     private final UserDetailsServiceImpl userDetailsService;
     public void createFakeProducts(int number) {
         if (number <= 0) return;
@@ -48,8 +47,6 @@ public class InitialDataCreationService {
             else productService.save(product);
         }
     }
-
-
     public void createFakeActivity(Product product) {
         int levelIndex = faker.number().numberBetween(0, Level.values().length);
         Level level = Level.values()[levelIndex];

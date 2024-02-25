@@ -33,10 +33,10 @@ public class UserMapper {
                 userDto.getEmail(),
                 userDto.getBirthday(),
                 userDto.getAddress(),
-                userDto.getLevel(),
-                userDto.getRegistration_date(),
-                userDto.getLast_login(),
-                userDto.getRole()
+                null,
+                null,
+                null,
+                null
         );
     }
 }
