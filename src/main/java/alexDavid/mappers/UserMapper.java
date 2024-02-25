@@ -1,5 +1,6 @@
 package alexDavid.mappers;
 
+import alexDavid.dtos.UserDto.UserRequestDto;
 import alexDavid.dtos.UserDto.UserResponseDto;
 import alexDavid.models.User.User;
 import org.springframework.stereotype.Component;
@@ -22,7 +23,7 @@ public class UserMapper {
                 user.getRole()
         );
     }
-    public User toModel(UserResponseDto userDto){
+    public User toModel(UserRequestDto userDto){
         return new User(
                 null,
                 userDto.getNickname(),
