@@ -14,6 +14,7 @@ public class ProductResponseDto {
     private final Double starting_price;
     private final Double final_price;
     private final String image;
+    private final Double weight;
     private final Category category;
     private final String tag;
 }

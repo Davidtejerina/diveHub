@@ -20,35 +20,27 @@ import java.util.List;
 @RestController
 @RequestMapping("/divehub/activities")
 @RequiredArgsConstructor
-@Slf4j
 public class ActivityController {
     private final ActivityService activityService;
     private final ActivityMapper activityMapper;
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<ActivityResponseDto>> getAllActivities(
 
     ) {
-        log.info("getAllActivities");
-        return ResponseEntity.ok(
-                activityMapper.toResponse(activityService.findAll())
-        );
+        return ResponseEntity.ok(activityMapper.toResponse(activityService.findAll()));
     }
 
     @GetMapping("/available")
     public ResponseEntity<List<ActivityResponseDto>> getAllAvailableActivities(
     ){
-        log.info("getAllAvailableActivities");
-        return ResponseEntity.ok(activityMapper.toResponse(activityService.findByAvailable())
-        );
-
+        return ResponseEntity.ok(activityMapper.toResponse(activityService.findByAvailable()));
     }
 
     @GetMapping("/available_spaces/{id}")
     public ResponseEntity<Integer> getAllAvailable_spacesByActivityId(
             @PathVariable Long id
     ){
-        log.info("getAllAvailable_spacesByActivityId");
         return ResponseEntity.ok(activityService.findById(id).getAvailable_spaces());
     }
 
@@ -56,7 +48,6 @@ public class ActivityController {
     public ResponseEntity<Duration> getRemainingTimeByActivityId(
             @PathVariable Long id
     ){
-        log.info("getTimeRemainingByActivityId");
         return ResponseEntity.ok(activityService.getRemainingTime(id)); //en horas
     }
 }

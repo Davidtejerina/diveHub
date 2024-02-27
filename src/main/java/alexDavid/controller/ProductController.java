@@ -23,85 +23,67 @@ public class ProductController {
     private final ProductMapper productMapper;
 
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<ProductResponseDto>> getAllProducts(
     ) {
-        return ResponseEntity.ok(
-                productMapper.toResponse(productService.findAll())
-        );
+        return ResponseEntity.ok(productMapper.toResponse(productService.findAll()));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/getProduct/{id}")
     public ResponseEntity<ProductResponseDto> getProductById(
             @PathVariable Long id
     ) {
-        return ResponseEntity.ok(
-                productMapper.toResponse(productService.findById(id))
-        );
+        return ResponseEntity.ok(productMapper.toResponse(productService.findById(id)));
     }
 
     @GetMapping("/tag/{tag}")
     public ResponseEntity<List<ProductResponseDto>> getProductByTag(
             @PathVariable String tag
     ) {
-        return ResponseEntity.ok(
-                productMapper.toResponse(productService.findProductsByTagIgnoreCase(tag))
-        );
+        return ResponseEntity.ok(productMapper.toResponse(productService.findProductsByTagIgnoreCase(tag)));
     }
 
-
-    /*
-    * Método que te devuelve un producto si en su nombre contiene una palabra/letra.
-    */
     @GetMapping("/name/{name}")
     public ResponseEntity<List<ProductResponseDto>> getProductContainsInName(
             @PathVariable String name
     ) {
-        return ResponseEntity.ok(
-                productMapper.toResponse(productService.findByNameContainsIgnoreCase(name))
-        );
+        return ResponseEntity.ok(productMapper.toResponse(productService.findByNameContainsIgnoreCase(name)));
     }
-
 
     @GetMapping("/price/descending")
     public ResponseEntity<List<ProductResponseDto>> getProductOrderByPrice(
     ) {
-        return ResponseEntity.ok(
-                productMapper.toResponse(productService.findAllByOrderByFinal_priceDesc())
-        );
+        return ResponseEntity.ok(productMapper.toResponse(productService.findAllByOrderByFinal_priceDesc()));
     }
+
     @GetMapping("/price/ascending")
     public ResponseEntity<List<ProductResponseDto>> getProductOrderByPriceAsc(){
         return ResponseEntity.ok(productMapper.toResponse(productService.findAllByOrderByFinal_priceAsc()));
     }
-    @PostMapping
+
+    @PostMapping("/createProduct")
     public ResponseEntity<ProductResponseDto> postProduct(
             @RequestBody ProductRequestDto productRequestDto
     ) {
         Product productSaved = productService.save(productMapper.toModel(productRequestDto));
-        return ResponseEntity.created(null).body(
-                productMapper.toResponse(productSaved)
-        );
+        return ResponseEntity.created(null).body(productMapper.toResponse(productSaved));
     }
-    @PutMapping("/{id}")
+
+    @PutMapping("/updateProduct/{id}")
     public ResponseEntity<ProductResponseDto> putProduct(
             @PathVariable Long id,
             @RequestBody ProductRequestDto productRequestDto
     ) {
         Product productUpdated = productService.update(id, productMapper.toModel(productRequestDto));
-        return ResponseEntity.ok(
-                productMapper.toResponse(productUpdated));
-
+        return ResponseEntity.ok(productMapper.toResponse(productUpdated));
     }
-    @DeleteMapping("/delete/{id}")
+
+    @DeleteMapping("/deleteProduct/{id}")
     public void deleteById(
             @PathVariable Long id
     ) {
         productService.deleteProductById(id);
     }
-
-
-
 }
 
 

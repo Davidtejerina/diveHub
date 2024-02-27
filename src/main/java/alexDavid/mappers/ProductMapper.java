@@ -4,8 +4,8 @@ import alexDavid.dtos.ProductDTO.ProductRequestDto;
 import alexDavid.dtos.ProductDTO.ProductResponseDto;
 import alexDavid.models.Product;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
+
 
 @Component
 public class ProductMapper {
@@ -18,6 +18,7 @@ public class ProductMapper {
                 product.getStarting_price(),
                 product.getFinal_price(),
                 product.getImage(),
+                product.getWeight(),
                 product.getCategory(),
                 product.getTag()
         );
@@ -38,6 +39,7 @@ public class ProductMapper {
                 productRequesDto.getStarting_price(),
                 productRequesDto.getFinal_price(),
                 productRequesDto.getImage(),
+                productRequesDto.getWeight(),
                 productRequesDto.getCategory(),
                 productRequesDto.getTag()
         );

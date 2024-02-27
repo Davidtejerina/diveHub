@@ -191,7 +191,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/divehub/products",
+							"raw": "http://localhost:8080/divehub/products/all",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -199,7 +199,8 @@
 							"port": "8080",
 							"path": [
 								"divehub",
-								"products"
+								"products",
+								"all"
 							]
 						}
 					},
@@ -221,10 +222,20 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJkaXZlaHViIiwic3ViIjoidXNlciIsImV4cCI6MTcwOTEyMDYwM30.gEaOIolS4NQWiYiNo5ixnLdwtRxFi2N7ocF-MjF0uto",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/divehub/products/2",
+							"raw": "http://localhost:8080/divehub/products/getProduct/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -233,6 +244,7 @@
 							"path": [
 								"divehub",
 								"products",
+								"getProduct",
 								"2"
 							]
 						}
@@ -300,6 +312,16 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJkaXZlaHViIiwic3ViIjoidXNlciIsImV4cCI6MTcwOTEyMDYwM30.gEaOIolS4NQWiYiNo5ixnLdwtRxFi2N7ocF-MjF0uto",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -335,6 +357,16 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJkaXZlaHViIiwic3ViIjoidXNlciIsImV4cCI6MTcwOTEyMDYwM30.gEaOIolS4NQWiYiNo5ixnLdwtRxFi2N7ocF-MjF0uto",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -370,20 +402,10 @@
 						}
 					],
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJkaXZlaHViIiwic3ViIjoidXNlciIsImV4cCI6MTcwODk2OTc1NH0.0w65eA_otYbtFugl_7vfFWa5keHWjN6KU0sz5zQydWw",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/divehub/products/name/Practi",
+							"raw": "http://localhost:8080/divehub/products/name/Small",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -393,7 +415,7 @@
 								"divehub",
 								"products",
 								"name",
-								"Practi"
+								"Small"
 							]
 						}
 					},
@@ -416,6 +438,16 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJkaXZlaHViIiwic3ViIjoidXNlciIsImV4cCI6MTcwOTEyMDk5MH0.RxiLKAyKHr8nV23U_k5I84G_b4SrYe9D7MrwEFbTNcQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"body": {
@@ -428,7 +460,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/divehub/products/delete/3",
+							"raw": "http://localhost:8080/divehub/products/deleteProduct/21",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -437,8 +469,8 @@
 							"path": [
 								"divehub",
 								"products",
-								"delete",
-								"3"
+								"deleteProduct",
+								"21"
 							]
 						}
 					},
@@ -465,7 +497,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJkaXZlaHViIiwic3ViIjoidXNlciIsImV4cCI6MTcwODk3MDI2NX0.IhoKkxb6aAE3xQfGQzbxySCRIyIA59rU9xDPzgVqYBU",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJkaXZlaHViIiwic3ViIjoidXNlciIsImV4cCI6MTcwOTEyMDk5MH0.RxiLKAyKHr8nV23U_k5I84G_b4SrYe9D7MrwEFbTNcQ",
 									"type": "string"
 								}
 							]
@@ -482,7 +514,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/divehub/products",
+							"raw": "http://localhost:8080/divehub/products/createProduct",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -490,7 +522,8 @@
 							"port": "8080",
 							"path": [
 								"divehub",
-								"products"
+								"products",
+								"createProduct"
 							]
 						}
 					},
@@ -521,7 +554,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/divehub/products/20",
+							"raw": "http://localhost:8080/divehub/products/updateProduct/20",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -530,6 +563,7 @@
 							"path": [
 								"divehub",
 								"products",
+								"updateProduct",
 								"20"
 							]
 						}
@@ -680,7 +714,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJkaXZlaHViIiwic3ViIjoiYSIsImV4cCI6MTcwODk3MTIwNn0.svRP0v00e86fjsTeuIyWgwRQBVv19So0r4T8-qd3ZZg",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJkaXZlaHViIiwic3ViIjoidXNlciIsImV4cCI6MTcwOTEyMDYwM30.gEaOIolS4NQWiYiNo5ixnLdwtRxFi2N7ocF-MjF0uto",
 									"type": "string"
 								}
 							]
@@ -689,7 +723,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nickname\": null,\r\n    \"password\": \"$2a$12$K4tojeaYWMK55KzWzDWtLOuuUjRTkycWhSGHYWA2LXMZqmZUtuXPO\",\r\n    \"name\": null,\r\n    \"surnames\": \"hola\",\r\n    \"email\": \"user\",\r\n    \"birthday\": null,\r\n    \"address\": null\r\n}",
+							"raw": "{\r\n    \"nickname\": null,\r\n    \"password\": \"$2a$12$K4tojeaYWMK55KzWzDWtLOuuUjRTkycWhSGHYWA2LXMZqmZUtuXPO\",\r\n    \"name\": null,\r\n    \"surnames\": \"hola\",\r\n    \"email\": \"aa\",\r\n    \"birthday\": null,\r\n    \"address\": null\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

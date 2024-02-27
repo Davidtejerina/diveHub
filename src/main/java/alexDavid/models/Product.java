@@ -18,6 +18,7 @@ public class Product {
     private Double starting_price;
     private Double final_price;
     private String image;
+    private Double weight;
     private Category category;
     private String tag;
 }
