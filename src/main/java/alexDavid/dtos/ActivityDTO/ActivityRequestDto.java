@@ -2,17 +2,11 @@ package alexDavid.dtos.ActivityDTO;
 
 import alexDavid.models.Category;
 import alexDavid.models.Level;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Data
-@NoArgsConstructor(force = true) // Para que no me de error en el constructor de jackson
-@RequiredArgsConstructor // Para que me cree un constructor con los atributos finales
-@Builder
 public class ActivityRequestDto {
     private final String name;
     private final String description;

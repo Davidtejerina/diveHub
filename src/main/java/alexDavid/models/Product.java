@@ -4,12 +4,12 @@ package alexDavid.models;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class Product {
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Product {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,7 +18,6 @@ public class Product {
     private Double starting_price;
     private Double final_price;
     private String image;
-    private Double weight;
     private Category category;
     private String tag;
 }

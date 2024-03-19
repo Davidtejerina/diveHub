@@ -1,50 +1,50 @@
 package alexDavid.service;
 
 import alexDavid.models.Category;
-import alexDavid.models.Product;
+import alexDavid.models.Item;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import alexDavid.repository.ProductRepository;
+import alexDavid.repository.ItemRepository;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ProductServiceImpl implements ProductService {
+public class ItemServiceImpl implements ItemService {
 
-    private final ProductRepository productRepository;
+    private final ItemRepository productRepository;
 
     @Override
-    public Product findById(Long id) {
+    public Item findById(Long id) {
         return productRepository.findById(id).get();
     }
 
     @Override
-    public List<Product> findProductsByName(String name) {
+    public List<Item> findProductsByName(String name) {
         return productRepository.findProductsByNameContainsIgnoreCase(name);
     }
 
     @Override
-    public List<Product> findProductByCategory(Category category) {
+    public List<Item> findProductByCategory(Category category) {
         return productRepository.findProductsByCategory(category);
     }
 
     @Override
-    public List<Product> findAll() {
+    public List<Item> findAll() {
         return productRepository.findAll();
     }
 
     @Override
-    public Product save(Product product){
+    public Item save(Item product){
         return productRepository.save(product);
     }
 
     @Override
-    public List<Product> findProductsByTagIgnoreCase(String tag) {
+    public List<Item> findProductsByTagIgnoreCase(String tag) {
         return productRepository.findProductsByTagIgnoreCase(tag);
     }
 
     @Override
-    public List<Product> findByNameContainsIgnoreCase(String name) {
+    public List<Item> findByNameContainsIgnoreCase(String name) {
         return productRepository.findByNameContainsIgnoreCase(name);
     }
 
@@ -53,8 +53,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product update(Long id, Product product) {
-        Product productUpdated = this.findById(id);
+    public Item update(Long id, Item product) {
+        Item productUpdated = this.findById(id);
 
         productUpdated.setName(product.getName());
         productUpdated.setDescription(product.getDescription());
@@ -69,12 +69,12 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public List<Product> findAllByOrderByFinal_priceDesc() {
+    public List<Item> findAllByOrderByFinal_priceDesc() {
         return productRepository.findAllOrderByFinal_price();
     }
 
     @Override
-    public List<Product> findAllByOrderByFinal_priceAsc() {
+    public List<Item> findAllByOrderByFinal_priceAsc() {
         return productRepository.findAllOrderByFinal_priceAsc();
     }
 }

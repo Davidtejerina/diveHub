@@ -1,13 +1,10 @@
-package alexDavid.dtos.ProductDTO;
+package alexDavid.dtos.ItemDTO;
 
-import lombok.*;
+import lombok.Data;
 import alexDavid.models.Category;
 
 @Data
-@NoArgsConstructor(force = true) // Para que no me de error en el constructor de jackson
-@RequiredArgsConstructor // Para que me cree un constructor con los atributos finales
-@Builder
-public class ProductResponseDto {
+public class ItemResponseDto {
     private final Long id;
     private final String name;
     private final String description;
