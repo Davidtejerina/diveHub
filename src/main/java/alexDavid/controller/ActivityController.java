@@ -31,6 +31,20 @@ public class ActivityController {
         return ResponseEntity.ok(activityMapper.toResponse(activityService.findAll()));
     }
 
+    @GetMapping("/getActivityById/{id}")
+    public ResponseEntity<ActivityResponseDto> getActivityById(
+        @PathVariable Long id
+    ) {
+        return ResponseEntity.ok(activityMapper.toResponse(activityService.findById(id)));
+    }
+
+    @GetMapping("/getActivityByName/{name}")
+    public ResponseEntity<List<ActivityResponseDto>> getActivityByName(
+            @PathVariable String name
+    ) {
+        return ResponseEntity.ok(activityMapper.toResponse(activityService.findByName(name)));
+    }
+
     @GetMapping("/available")
     public ResponseEntity<List<ActivityResponseDto>> getAllAvailableActivities(
     ){

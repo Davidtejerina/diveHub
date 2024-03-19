@@ -1,6 +1,5 @@
 package alexDavid.controller;
 
-
 import alexDavid.dtos.ItemDTO.ItemRequestDto;
 import alexDavid.dtos.ItemDTO.ItemResponseDto;
 import alexDavid.models.Item;
@@ -13,11 +12,10 @@ import alexDavid.service.ItemService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/divehub/products")
+@RequestMapping("/divehub/items")
 @RequiredArgsConstructor
 
 public class ItemController {
-
     private final ItemService itemService;
     private final ItemMapper itemMapper;
 
@@ -49,15 +47,12 @@ public class ItemController {
         return ResponseEntity.ok(itemMapper.toResponse(itemService.findByNameContainsIgnoreCase(name)));
     }
 
-    @GetMapping("/price/descending")
+    @GetMapping("/price/{orderedBy}")
     public ResponseEntity<List<ItemResponseDto>> getItemOrderByPrice(
+            @PathVariable Integer orderedBy
     ) {
-        return ResponseEntity.ok(itemMapper.toResponse(itemService.findAllByOrderByFinal_priceDesc()));
-    }
-
-    @GetMapping("/price/ascending")
-    public ResponseEntity<List<ItemResponseDto>> getItemOrderByPriceAsc(){
-        return ResponseEntity.ok(itemMapper.toResponse(itemService.findAllByOrderByFinal_priceAsc()));
+        if(orderedBy==0) return ResponseEntity.ok(itemMapper.toResponse(itemService.findAllByOrderByFinal_priceDesc()));
+        else return ResponseEntity.ok(itemMapper.toResponse(itemService.findAllByOrderByFinal_priceAsc()));
     }
 
     @PostMapping("/createItem")

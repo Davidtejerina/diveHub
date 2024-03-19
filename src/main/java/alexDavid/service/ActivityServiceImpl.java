@@ -5,15 +5,12 @@ import alexDavid.repository.ActivityRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
 import java.time.Duration;
 import java.util.List;
 
 @Service
-@Slf4j
 @RequiredArgsConstructor
 public class ActivityServiceImpl implements ActivityService {
-
     private final ActivityRepository activityRepository;
 
     @Override
@@ -23,7 +20,12 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public Activity findById(Long id) {
-        return activityRepository.findById(id).get();
+        return activityRepository.findById(id).orElseThrow();
+    }
+
+    @Override
+    public List<Activity> findByName(String name){
+        return activityRepository.findByNameContainsIgnoreCase(name);
     }
 
     @Override
@@ -38,7 +40,7 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public Duration getRemainingTime(Long id){
-        Activity activity = activityRepository.findById(id).get();
+        Activity activity = activityRepository.findById(id).orElseThrow();
         return Duration.between(activity.getTime_starts(), activity.getTime_ends());
     }
 }
