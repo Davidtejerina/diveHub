@@ -8,7 +8,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.JOINED) //Se crean las tablas de las subclases, las cuales solo contienen las columnas específicas de esas subclases,
+                                                //junto con una clave externa que hace referencia a la tabla de la superclase.
 public abstract class Product {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)

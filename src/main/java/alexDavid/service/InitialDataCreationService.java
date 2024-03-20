@@ -29,7 +29,11 @@ public class InitialDataCreationService {
         if (number <= 0) return;
 
         for (int i = 0; i<number; i++) {
-            int categoryIndex = faker.number().numberBetween(0, Category.values().length);
+
+            int categoryIndex;
+            if (Math.random() < 0.5) categoryIndex = 0;     // Asi hay 50% de ser product y 50% de ser course o dive
+            else categoryIndex = faker.number().numberBetween(1, Category.values().length);
+
             Category category = Category.values()[categoryIndex];
 
             if (category == Category.COURSE || category == Category.DIVE) createFakeActivity(category);
