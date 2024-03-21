@@ -9,7 +9,6 @@ import java.util.List;
 
 
 public interface ItemRepository extends JpaRepository<Item, Long> {
-    List<Item> findProductsByNameContainsIgnoreCase(String name);
     List<Item> findProductsByCategory(Category category);
     List<Item> findProductsByTagIgnoreCase(String tag);
     List<Item> findByNameContainsIgnoreCase(String name);

@@ -1,26 +1,27 @@
 package alexDavid.service;
 
-import alexDavid.models.Activity;
-import alexDavid.models.Category;
-import alexDavid.models.Item;
-import alexDavid.models.Level;
+import alexDavid.models.*;
 import alexDavid.models.User.User;
+import alexDavid.service.CartService.CartService;
+import alexDavid.service.WishListService.WishListService;
 import lombok.RequiredArgsConstructor;
-import alexDavid.models.Product;
-import lombok.extern.slf4j.Slf4j;
 import net.datafaker.Faker;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
+
 
 @Service
 @RequiredArgsConstructor
 public class InitialDataCreationService {
+    private final ProductService productService;
     private final ItemService itemService;
     private final ActivityService activityService;
+    private final CartService cartService;
+    private final WishListService wishListService;
     private final Faker faker = new Faker(new Locale("en-US"));
     private final UserDetailsServiceImpl userDetailsService;
 
@@ -28,7 +29,7 @@ public class InitialDataCreationService {
     public void createFakeProducts(int number) {
         if (number <= 0) return;
 
-        for (int i = 0; i<number; i++) {
+        for (int i = 0; i < number; i++) {
 
             int categoryIndex;
             if (Math.random() < 0.5) categoryIndex = 0;     // Asi hay 50% de ser product y 50% de ser course o dive
@@ -90,5 +91,34 @@ public class InitialDataCreationService {
     public void createFakeUser(){
         User user = new User("user", "$2a$12$K4tojeaYWMK55KzWzDWtLOuuUjRTkycWhSGHYWA2LXMZqmZUtuXPO"); // Esto es "password" codificado con bcrypt)
         userDetailsService.save(user);
+    }
+
+    public void createFakeCartsForUser(int number) {
+        if (number <= 0) return;
+
+        List<Product> products = productService.findAll();
+        for (int i = 0; i < number; i++) {
+            Cart cart = new Cart(
+                    null,
+                    userDetailsService.loadUserByUserEmail("user"),
+                    products.get(i),
+                    faker.number().numberBetween(1, 5)
+            );
+            cartService.save(cart);
+        }
+    }
+
+    public void createFakeWishListsForUser(int number) {
+        if (number <= 0) return;
+
+        List<Product> products = productService.findAll();
+        for (int i = 0; i < number; i++) {
+            WishList WishList = new WishList(
+                    null,
+                    userDetailsService.loadUserByUserEmail("user"),
+                    products.get(i)
+            );
+            wishListService.save(WishList);
+        }
     }
 }

@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/divehub/items")
 @RequiredArgsConstructor
-
+@CrossOrigin
 public class ItemController {
     private final ItemService itemService;
     private final ItemMapper itemMapper;

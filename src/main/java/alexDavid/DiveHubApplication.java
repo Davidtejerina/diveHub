@@ -28,6 +28,8 @@ public class DiveHubApplication {
 		return args -> {
 			service.createFakeUser();
 			service.createFakeProducts(20);
+			service.createFakeCartsForUser(3);
+			service.createFakeWishListsForUser(5);
 		};
 	}
 

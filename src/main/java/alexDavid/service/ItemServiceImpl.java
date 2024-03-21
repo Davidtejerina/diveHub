@@ -10,71 +10,61 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ItemServiceImpl implements ItemService {
-
-    private final ItemRepository productRepository;
+    private final ItemRepository itemRepository;
 
     @Override
     public Item findById(Long id) {
-        return productRepository.findById(id).get();
-    }
-
-    @Override
-    public List<Item> findProductsByName(String name) {
-        return productRepository.findProductsByNameContainsIgnoreCase(name);
-    }
-
-    @Override
-    public List<Item> findProductByCategory(Category category) {
-        return productRepository.findProductsByCategory(category);
+        return itemRepository.findById(id).orElseThrow();
     }
 
     @Override
     public List<Item> findAll() {
-        return productRepository.findAll();
+        return itemRepository.findAll();
     }
 
     @Override
-    public Item save(Item product){
-        return productRepository.save(product);
+    public Item save(Item item){
+        return itemRepository.save(item);
     }
 
     @Override
     public List<Item> findProductsByTagIgnoreCase(String tag) {
-        return productRepository.findProductsByTagIgnoreCase(tag);
+        return itemRepository.findProductsByTagIgnoreCase(tag);
     }
 
     @Override
     public List<Item> findByNameContainsIgnoreCase(String name) {
-        return productRepository.findByNameContainsIgnoreCase(name);
+        return itemRepository.findByNameContainsIgnoreCase(name);
     }
 
     @Override
-    public void deleteProductById(Long id) {productRepository.deleteById(id);
+    public void deleteProductById(Long id) {itemRepository.deleteById(id);
     }
 
     @Override
-    public Item update(Long id, Item product) {
-        Item productUpdated = this.findById(id);
+    public Item update(Long id, Item item) {
+        Item itemUpdated = this.findById(id);
 
-        productUpdated.setName(product.getName());
-        productUpdated.setDescription(product.getDescription());
-        productUpdated.setStarting_price(productUpdated.getStarting_price());
-        productUpdated.setFinal_price(product.getFinal_price());
-        productUpdated.setImage(product.getImage());
-        productUpdated.setCategory(product.getCategory());
-        productUpdated.setTag(product.getTag());
+        itemUpdated.setName(item.getName());
+        itemUpdated.setDescription(item.getDescription());
+        itemUpdated.setStarting_price(item.getStarting_price());
+        itemUpdated.setFinal_price(item.getFinal_price());
+        itemUpdated.setImage(item.getImage());
+        itemUpdated.setCategory(item.getCategory());
+        itemUpdated.setTag(item.getTag());
+        itemUpdated.setWeight(item.getWeight());
 
-        return productRepository.save(productUpdated);
+        return itemRepository.save(itemUpdated);
     }
 
 
     @Override
     public List<Item> findAllByOrderByFinal_priceDesc() {
-        return productRepository.findAllOrderByFinal_price();
+        return itemRepository.findAllOrderByFinal_price();
     }
 
     @Override
     public List<Item> findAllByOrderByFinal_priceAsc() {
-        return productRepository.findAllOrderByFinal_priceAsc();
+        return itemRepository.findAllOrderByFinal_priceAsc();
     }
 }

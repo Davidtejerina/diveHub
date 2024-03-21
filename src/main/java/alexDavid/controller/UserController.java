@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/divehub/user")
 @RequiredArgsConstructor
-
+@CrossOrigin
 public class UserController {
 
     private final UserDetailsServiceImpl userService;

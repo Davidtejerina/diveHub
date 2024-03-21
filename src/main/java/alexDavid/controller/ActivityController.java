@@ -20,6 +20,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/divehub/activities")
 @RequiredArgsConstructor
+@CrossOrigin
 public class ActivityController {
     private final ActivityService activityService;
     private final ActivityMapper activityMapper;
