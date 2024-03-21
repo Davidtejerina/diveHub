@@ -84,4 +84,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public boolean existUser(String email){
         return userDetailsRepository.existsByEmail(email);
     }
+
+    public boolean existNickname(String nickname){
+        return userDetailsRepository.existsByNickname(nickname);
+    }
 }
