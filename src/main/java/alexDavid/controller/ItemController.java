@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import alexDavid.mappers.ItemMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import alexDavid.service.ItemService;
+import alexDavid.service.ItemService.ItemService;
 
 import java.util.List;
 

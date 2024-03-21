@@ -1,9 +1,8 @@
-package alexDavid.service;
+package alexDavid.service.ActivityService;
 
 import alexDavid.models.Activity;
 import alexDavid.repository.ActivityRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import java.time.Duration;
 import java.util.List;

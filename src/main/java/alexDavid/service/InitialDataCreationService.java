@@ -2,7 +2,10 @@ package alexDavid.service;
 
 import alexDavid.models.*;
 import alexDavid.models.User.User;
+import alexDavid.service.ActivityService.ActivityService;
 import alexDavid.service.CartService.CartService;
+import alexDavid.service.ItemService.ItemService;
+import alexDavid.service.ProductService.ProductService;
 import alexDavid.service.WishListService.WishListService;
 import lombok.RequiredArgsConstructor;
 import net.datafaker.Faker;

@@ -1,4 +1,4 @@
-package alexDavid.service;
+package alexDavid.service.ItemService;
 
 import alexDavid.models.Category;
 import alexDavid.models.Item;

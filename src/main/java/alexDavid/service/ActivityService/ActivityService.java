@@ -1,4 +1,4 @@
-package alexDavid.service;
+package alexDavid.service.ActivityService;
 
 import alexDavid.models.Activity;
 
