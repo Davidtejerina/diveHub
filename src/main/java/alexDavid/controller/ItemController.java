@@ -55,6 +55,13 @@ public class ItemController {
         else return ResponseEntity.ok(itemMapper.toResponse(itemService.findAllByOrderByFinal_priceAsc()));
     }
 
+    @GetMapping("/stock/{id}")
+    public ResponseEntity<Boolean> hasStock(
+            @PathVariable Long id
+    ) {
+       return ResponseEntity.ok(itemService.hasStock(id));
+    }
+
     @PostMapping("/createItem")
     public ResponseEntity<ItemResponseDto> postItem(
             @RequestBody ItemRequestDto productRequestDto

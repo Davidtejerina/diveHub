@@ -1,6 +1,5 @@
 package alexDavid.service.ItemService;
 
-import alexDavid.models.Category;
 import alexDavid.models.Item;
 import java.util.List;
 
@@ -15,5 +14,6 @@ public interface ItemService {
     List<Item> findAllByOrderByFinal_priceAsc();
     void deleteProductById(Long id);
     Item update (Long id, Item item);
+    Boolean hasStock(Long id);
 
 }

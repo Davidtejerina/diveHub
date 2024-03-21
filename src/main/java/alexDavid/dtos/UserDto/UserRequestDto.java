@@ -16,6 +16,7 @@ public class UserRequestDto {
     private final String name;
     private final String surnames;
     private final String email;
+    private final Integer phone;
     private final LocalDateTime birthday;
     private final String address;
 }

@@ -46,6 +46,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         userUpdated.setSurnames(user.getSurnames());
         userUpdated.setNickname(user.getNickname());
         userUpdated.setBirthday(user.getBirthday());
+        userUpdated.setPhone(user.getPhone());
         userUpdated.setAddress(user.getAddress());
         userUpdated.setLevel(user.getLevel());
         userUpdated.setLast_login(user.getLast_login());
@@ -62,6 +63,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 signupRequest.getName(),
                 signupRequest.getSurnames(),
                 signupRequest.getEmail(),
+                signupRequest.getPhone(),
                 signupRequest.getBirthday(),
                 signupRequest.getAddress(),
                 null,

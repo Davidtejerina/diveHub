@@ -28,6 +28,7 @@ public class User implements UserDetails {
     private String surnames;
     @Column(unique = true)
     private String email;
+    private Integer phone;
     private LocalDateTime birthday;
     private String address;
     private Level level;

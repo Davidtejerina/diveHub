@@ -10,6 +10,7 @@ public class SignupRequest {
     private String name;
     private String surnames;
     private String email;
+    private Integer phone;
     private LocalDateTime birthday;
     private String address;
 }

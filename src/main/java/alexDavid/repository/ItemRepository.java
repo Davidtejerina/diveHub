@@ -16,6 +16,4 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     List<Item> findAllOrderByFinal_price();
     @Query("SELECT i FROM Item i ORDER BY i.final_price ASC")
     List<Item> findAllOrderByFinal_priceAsc();
-
-
 }

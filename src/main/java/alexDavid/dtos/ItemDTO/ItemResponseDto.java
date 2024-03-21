@@ -14,4 +14,5 @@ public class ItemResponseDto {
     private final Double weight;
     private final Category category;
     private final String tag;
+    private final Integer stock;
 }

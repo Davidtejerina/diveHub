@@ -20,7 +20,8 @@ public class ItemMapper {
                 item.getImage(),
                 item.getWeight(),
                 item.getCategory(),
-                item.getTag()
+                item.getTag(),
+                item.getStock()
         );
     }
 
@@ -41,7 +42,8 @@ public class ItemMapper {
                 itemRequesDto.getImage(),
                 itemRequesDto.getWeight(),
                 itemRequesDto.getCategory(),
-                itemRequesDto.getTag()
+                itemRequesDto.getTag(),
+                itemRequesDto.getStock()
         );
     }
 }

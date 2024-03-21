@@ -23,14 +23,14 @@ public class DiveHubApplication {
 	}
 
 
-	@Bean
-	public CommandLineRunner init(InitialDataCreationService service) {
-		return args -> {
-			service.createFakeUser();
-			service.createFakeProducts(20);
-			service.createFakeCartsForUser(3);
-			service.createFakeWishListsForUser(5);
-		};
-	}
+//	@Bean
+//	public CommandLineRunner init(InitialDataCreationService service) {
+//		return args -> {
+//			service.createFakeUser();
+//			service.createFakeProducts(20);
+//			service.createFakeCartsForUser(3);
+//			service.createFakeWishListsForUser(5);
+//		};
+//	}
 
 }

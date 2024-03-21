@@ -52,8 +52,14 @@ public class ItemServiceImpl implements ItemService {
         itemUpdated.setCategory(item.getCategory());
         itemUpdated.setTag(item.getTag());
         itemUpdated.setWeight(item.getWeight());
+        itemUpdated.setStock(item.getStock());
 
         return itemRepository.save(itemUpdated);
+    }
+
+    @Override
+    public Boolean hasStock(Long id) {
+        return itemRepository.findById(id).orElseThrow().getStock() > 0;
     }
 
 
