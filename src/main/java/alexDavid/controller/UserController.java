@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/divehub/user")
+@RequestMapping("/divehub/users")
 @RequiredArgsConstructor
 @CrossOrigin
 public class UserController {
