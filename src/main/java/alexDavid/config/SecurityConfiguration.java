@@ -58,6 +58,8 @@ public class SecurityConfiguration {
                         .requestMatchers(mvc.pattern("/divehub/activities/all")).permitAll()
                         .requestMatchers(mvc.pattern("/divehub/activities/getActivityById/{id}")).permitAll()
                         .requestMatchers(mvc.pattern("/divehub/activities/getActivityByName/{name}")).permitAll()
+                        .requestMatchers(mvc.pattern("/divehub/activities/tag/{tag}")).permitAll()
+                        .requestMatchers(mvc.pattern("/divehub/activities/category/{category}")).permitAll()
                         .requestMatchers(mvc.pattern("/divehub/activities/available")).permitAll()
                         .requestMatchers(mvc.pattern("/divehub/activities/available_spaces/{id}")).permitAll()
                         .requestMatchers(mvc.pattern("/divehub/activities/remaining-time/{id}")).permitAll()
