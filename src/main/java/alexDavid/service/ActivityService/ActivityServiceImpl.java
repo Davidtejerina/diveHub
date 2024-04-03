@@ -23,6 +23,11 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
+    public List<Activity> findProductsByTagIgnoreCase(String tag) {
+        return activityRepository.findProductsByTagIgnoreCase(tag);
+    }
+
+    @Override
     public List<Activity> findByName(String name){
         return activityRepository.findByNameContainsIgnoreCase(name);
     }

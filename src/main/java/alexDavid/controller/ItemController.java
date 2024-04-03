@@ -34,21 +34,21 @@ public class ItemController {
     }
 
     @GetMapping("/tag/{tag}")
-    public ResponseEntity<List<ItemResponseDto>> getItemByTag(
+    public ResponseEntity<List<ItemResponseDto>> getItemsByTag(
             @PathVariable String tag
     ) {
         return ResponseEntity.ok(itemMapper.toResponse(itemService.findProductsByTagIgnoreCase(tag)));
     }
 
     @GetMapping("/name/{name}")
-    public ResponseEntity<List<ItemResponseDto>> getItemContainsInName(
+    public ResponseEntity<List<ItemResponseDto>> getItemsContainsInName(
             @PathVariable String name
     ) {
         return ResponseEntity.ok(itemMapper.toResponse(itemService.findByNameContainsIgnoreCase(name)));
     }
 
     @GetMapping("/price/{orderedBy}")
-    public ResponseEntity<List<ItemResponseDto>> getItemOrderByPrice(
+    public ResponseEntity<List<ItemResponseDto>> getItemsOrderByPrice(
             @PathVariable Integer orderedBy
     ) {
         if(orderedBy==0) return ResponseEntity.ok(itemMapper.toResponse(itemService.findAllByOrderByFinal_priceDesc()));

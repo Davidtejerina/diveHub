@@ -9,7 +9,6 @@ import java.util.List;
 
 
 public interface ItemRepository extends JpaRepository<Item, Long> {
-    List<Item> findProductsByCategory(Category category);
     List<Item> findProductsByTagIgnoreCase(String tag);
     List<Item> findByNameContainsIgnoreCase(String name);
     @Query("SELECT i FROM Item i ORDER BY i.final_price DESC")

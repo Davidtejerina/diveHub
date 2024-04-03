@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.Duration;
 import java.util.List;
 
@@ -34,8 +33,15 @@ public class ActivityController {
         return ResponseEntity.ok(activityMapper.toResponse(activityService.findById(id)));
     }
 
+    @GetMapping("/tag/{tag}")
+    public ResponseEntity<List<ActivityResponseDto>> getActivitiesByTag(
+            @PathVariable String tag
+    ) {
+        return ResponseEntity.ok(activityMapper.toResponse(activityService.findProductsByTagIgnoreCase(tag)));
+    }
+
     @GetMapping("/getActivityByName/{name}")
-    public ResponseEntity<List<ActivityResponseDto>> getActivityByName(
+    public ResponseEntity<List<ActivityResponseDto>> getActivitiesByName(
             @PathVariable String name
     ) {
         return ResponseEntity.ok(activityMapper.toResponse(activityService.findByName(name)));
