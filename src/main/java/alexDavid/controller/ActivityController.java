@@ -40,6 +40,13 @@ public class ActivityController {
         return ResponseEntity.ok(activityMapper.toResponse(activityService.findProductsByTagIgnoreCase(tag)));
     }
 
+    @GetMapping("/category/{category}")
+    public ResponseEntity<List<ActivityResponseDto>> getActivitiesByCategory(
+            @PathVariable Integer category
+    ) {
+        return ResponseEntity.ok(activityMapper.toResponse(activityService.findProductsByCategory(category)));
+    }
+
     @GetMapping("/getActivityByName/{name}")
     public ResponseEntity<List<ActivityResponseDto>> getActivitiesByName(
             @PathVariable String name

@@ -1,6 +1,7 @@
 package alexDavid.service.ActivityService;
 
 import alexDavid.models.Activity;
+import alexDavid.models.Category;
 import alexDavid.repository.ActivityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,16 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public List<Activity> findProductsByTagIgnoreCase(String tag) {
         return activityRepository.findProductsByTagIgnoreCase(tag);
+    }
+
+    @Override
+    public List<Activity> findProductsByCategory(Integer categoryIndex) {
+        Category[] categories = Category.values();
+        if (categoryIndex >= 0 && categoryIndex < categories.length) {
+            Category category = categories[categoryIndex];
+            return activityRepository.findByCategory(category);
+        }
+        else throw new IllegalArgumentException("Índice de categoría inválido: " + categoryIndex);
     }
 
     @Override
