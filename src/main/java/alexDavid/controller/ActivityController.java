@@ -21,7 +21,6 @@ public class ActivityController {
 
     @GetMapping("/all")
     public ResponseEntity<List<ActivityResponseDto>> getAllActivities(
-
     ) {
         return ResponseEntity.ok(activityMapper.toResponse(activityService.findAll()));
     }

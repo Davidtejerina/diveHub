@@ -50,6 +50,11 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers(mvc.pattern("/divehub/auth/login")).permitAll()
                         .requestMatchers(mvc.pattern("/divehub/auth/signup")).permitAll()
+                        .requestMatchers(mvc.pattern("/divehub/products/all")).permitAll()
+                        .requestMatchers(mvc.pattern("/divehub/products/getProductById/{id}")).permitAll()
+                        .requestMatchers(mvc.pattern("/divehub/products/getProductByName/{name}")).permitAll()
+                        .requestMatchers(mvc.pattern("/divehub/products/tag/{tag}")).permitAll()
+                        .requestMatchers(mvc.pattern("/divehub/products/category/{category}")).permitAll()
                         .requestMatchers(mvc.pattern("/divehub/items/all")).permitAll()
                         .requestMatchers(mvc.pattern("/divehub/items/getItem/{id}")).permitAll()
                         .requestMatchers(mvc.pattern("/divehub/items/tag/{tag}")).permitAll()

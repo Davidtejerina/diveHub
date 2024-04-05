@@ -19,8 +19,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> findByCategory(Category category) {
-        return productRepository.findProductsByCategory(category);
+    public List<Product> findByCategory(Integer categoryIndex) {
+        Category[] categories = Category.values();
+        if (categoryIndex >= 0 && categoryIndex < categories.length) {
+            Category category = categories[categoryIndex];
+            return productRepository.findProductsByCategory(category);
+        }
+        else throw new IllegalArgumentException("Índice de categoría inválido: " + categoryIndex);
     }
 
     @Override
