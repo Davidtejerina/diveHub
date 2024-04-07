@@ -16,32 +16,27 @@ public class CartServiceImpl implements CartService{
 
     @Override
     public List<Cart> getListByUser(String email){
-        return this.cartRepository.findByUser_Email(email);
+        return cartRepository.findByUser_Email(email);
     }
 
     @Override
     public void cleanCart(String email){
-        this.cartRepository.deleteByUser_Email(email);
-    }
-
-    @Override
-    public void save(Cart cart) {
-        this.cartRepository.save(cart);
+        cartRepository.deleteByUser_Email(email);
     }
 
     @Override
     public void removeProduct(Long productId){
-        this.cartRepository.deleteByProduct_Id(productId);
+        cartRepository.deleteByProduct_Id(productId);
     }
 
     @Override
-    public void addProduct(Cart cart){
-        this.cartRepository.save(cart);
+    public Cart addProduct(Cart cart){
+        return cartRepository.save(cart);
     }
 
     @Override
     public Long getCountByClient(String email){
-        return this.cartRepository.countByUser_Email(email);
+        return cartRepository.countByUser_Email(email);
     }
 
     @Override
@@ -53,10 +48,10 @@ public class CartServiceImpl implements CartService{
     }
 
     @Override
-    public void updateProductQuantity(String user_email, Long productId, int quantity) {
+    public Cart updateProductQuantity(String user_email, Long productId, int quantity) {
         Cart cart = cartRepository.findByUser_EmailAndProduct_Id(user_email, productId);
         cart.setAmount(quantity);
-        cartRepository.save(cart);
+        return cartRepository.save(cart);
     }
 
     @Override

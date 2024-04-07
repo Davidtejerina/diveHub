@@ -1,6 +1,7 @@
 package alexDavid.controller;
 
 import alexDavid.dtos.CartDto.CartRequestDto;
+import alexDavid.dtos.CartDto.CartResponseDto;
 import alexDavid.mappers.CartMapper;
 import alexDavid.models.Cart;
 import alexDavid.service.CartService.CartService;
@@ -20,17 +21,17 @@ public class CartController {
     private final CartMapper cartMapper;
 
     @GetMapping("/{email}")
-    public ResponseEntity<List<Cart>> getListByUser(
+    public ResponseEntity<List<CartResponseDto>> getListByUser(
             @PathVariable String email
     ){
-        return ResponseEntity.ok(this.cartService.getListByUser(email));
+        return ResponseEntity.ok(cartMapper.toResponse(cartService.getListByUser(email)));
     }
 
     @GetMapping("/count/{email}")
     public ResponseEntity<Long> countByClient(
             @PathVariable("email") String email
     ){
-        return ResponseEntity.ok(this.cartService.getCountByClient(email));
+        return ResponseEntity.ok(cartService.getCountByClient(email));
     }
 
 
@@ -44,32 +45,31 @@ public class CartController {
 
 
     @GetMapping("/updateQuantity/{user_email}/{product_id}/{quantity}")
-    public ResponseEntity<?> updateProductQuantity(
+    public ResponseEntity<CartResponseDto> updateProductQuantity(
             @PathVariable("user_email") String user_email,
             @PathVariable("product_id") Long productId,
             @PathVariable("quantity") int quantity
     ){
-        this.cartService.updateProductQuantity(user_email, productId, quantity);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(cartMapper.toResponse(cartService.updateProductQuantity(user_email, productId, quantity)), HttpStatus.OK);
     }
 
 
     @PostMapping
-    public ResponseEntity<?> addProduct(
+    public ResponseEntity<CartResponseDto> addProduct(
             @RequestBody CartRequestDto cartRequestDto
     ){
         Cart cart = cartMapper.toModel(cartRequestDto);
-        if (cartService.isProductInCart(cart)) cartService.updateProductQuantity(cart.getUser().getEmail(), cart.getProduct().getId(), cart.getAmount());
-        else cartService.addProduct(cart);
+        if (cartService.isProductInCart(cart))
+            return new ResponseEntity<>(cartMapper.toResponse(cartService.updateProductQuantity(cart.getUser().getEmail(), cart.getProduct().getId(), cart.getAmount())), HttpStatus.OK);
+        else return new ResponseEntity<>(cartMapper.toResponse(cartService.addProduct(cart)), HttpStatus.OK);
 
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping("/clean/{product_id}")
     public ResponseEntity<?> removeProduct(
             @PathVariable("product_id") Long id
     ){
-        this.cartService.removeProduct(id);
+        cartService.removeProduct(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -77,7 +77,7 @@ public class CartController {
     public ResponseEntity<?> removeAllProducts(
             @PathVariable("email") String email
     ){
-        this.cartService.cleanCart(email);
+        cartService.cleanCart(email);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
