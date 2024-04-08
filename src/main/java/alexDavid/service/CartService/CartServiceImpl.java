@@ -35,6 +35,11 @@ public class CartServiceImpl implements CartService{
     }
 
     @Override
+    public Cart save(Cart cart) {
+        return cartRepository.save(cart);
+    }
+
+    @Override
     public Long getCountByClient(String email){
         return cartRepository.countByUser_Email(email);
     }

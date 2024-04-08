@@ -8,6 +8,7 @@ public interface CartService {
     void cleanCart(String email);
     void removeProduct(Long productId);
     Cart addProduct(Cart cart);
+    Cart save(Cart cart);
     Long getCountByClient(String email);
     double getTotalPriceByEmail(String email);
     Cart updateProductQuantity(String user_email, Long productId, int quantity);
