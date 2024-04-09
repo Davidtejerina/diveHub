@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/diveHub/carts")
+@RequestMapping("/divehub/carts")
 @RequiredArgsConstructor
 @CrossOrigin
 public class CartController {
