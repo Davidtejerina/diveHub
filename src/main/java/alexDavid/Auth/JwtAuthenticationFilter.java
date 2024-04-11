@@ -34,21 +34,25 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
         if(authorizationHeader != null && authorizationHeader.contains("Bearer ")){
             String token = authorizationHeader.replaceAll("Bearer ", "");
 
-            DecodedJWT decodedJWT;
-            try {
-                Algorithm algorithm = Algorithm.HMAC256(jwtSecretKey);
-                JWTVerifier verifier = JWT.require(algorithm)
-                        .withIssuer("divehub")
-                        .build();
-                decodedJWT = verifier.verify(token);
+            String[] tokenParts = token.split("\\.");
+            if (tokenParts.length == 3) {
+                DecodedJWT decodedJWT;
+                try {
+                    Algorithm algorithm = Algorithm.HMAC256(jwtSecretKey);
+                    JWTVerifier verifier = JWT.require(algorithm)
+                            .withIssuer("divehub")
+                            .build();
+                    decodedJWT = verifier.verify(token);
 
-                Authentication authentication = new UsernamePasswordAuthenticationToken(
-                        decodedJWT.getSubject(),
-                        "",
-                        new ArrayList<>()
-                );
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-            } catch (JWTVerificationException ignored){
+                    Authentication authentication = new UsernamePasswordAuthenticationToken(
+                            decodedJWT.getSubject(),
+                            "",
+                            new ArrayList<>()
+                    );
+                    SecurityContextHolder.getContext().setAuthentication(authentication);
+                } catch (JWTVerificationException exception) {
+                    System.out.println(exception.getMessage());
+                }
             }
         }
         doFilter(request, response, filterChain);
