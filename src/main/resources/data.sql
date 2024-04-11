@@ -78,12 +78,17 @@ VALUES
 
 
 
-INSERT INTO Cart (user_id, product_id, amount)
-VALUES
-    (1, 1, 1),
-    (1, 3, 1),
-    (2, 2, 7),
-    (2, 1, 1);
+-- INSERT INTO Cart (user_id, product_id, amount)
+-- VALUES
+--     (1, 1, 1),
+--     (1, 3, 1),
+--     (1, 4, 1),
+--     (1, 5, 1),
+--     (1, 6, 1),
+--     (1, 7, 1),
+--     (1, 3, 1),
+--     (2, 2, 7),
+--     (2, 1, 1);
 
 
 INSERT INTO Wish_list (user_id, product_id)

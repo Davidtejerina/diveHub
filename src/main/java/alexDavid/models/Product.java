@@ -4,6 +4,7 @@ package alexDavid.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
