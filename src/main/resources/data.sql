@@ -98,3 +98,13 @@ VALUES
     (2, 2),
     (2, 1);
 
+INSERT INTO Messages (email, content, date)
+VALUES
+    ('a', 'Contenido del mensaje 1', NOW()),
+    ('a', 'Contenido del mensaje 2', NOW()),
+    ('a', 'Contenido del mensaje 3', NOW()),
+    ('a', 'Contenido del mensaje 4', NOW()),
+    ('b', 'Contenido del mensaje 5', NOW()),
+    ('b', 'Contenido del mensaje 6', NOW()),
+    ('b', 'Contenido del mensaje 7', NOW()),
+    ('b', 'Contenido del mensaje 8', NOW());
