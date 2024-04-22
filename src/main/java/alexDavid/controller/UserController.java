@@ -35,7 +35,6 @@ public class UserController {
         return ResponseEntity.ok(userMapper.toResponse(userService.loadUserByUserEmail(email)));
     }
 
-
     @PutMapping("/{email}")
     public ResponseEntity<UserResponseDto> updateUser(
             @PathVariable String email,
@@ -43,6 +42,8 @@ public class UserController {
     ) {
         return ResponseEntity.ok(userMapper.toResponse(userService.updateUser(email, userMapper.toModel(user))));
     }
+
+
 }
 
 
