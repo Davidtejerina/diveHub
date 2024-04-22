@@ -11,7 +11,8 @@ public class WishListMapper {
         return new WishList(
                 null,
                 wishListDTO.getUser(),
-                wishListDTO.getProduct()
+                wishListDTO.getItem(),
+                wishListDTO.getActivity()
         );
     }
 }

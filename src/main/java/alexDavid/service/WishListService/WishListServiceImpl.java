@@ -1,6 +1,7 @@
 package alexDavid.service.WishListService;
 
 import alexDavid.models.WishList;
+import alexDavid.repository.ItemRepository;
 import alexDavid.repository.WishListRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class WishListServiceImpl implements WishListService {
     private final WishListRepository wishListRepository;
+    private final ItemRepository itemRepository;
 
     @Override
     public List<WishList> getListByUser(String email){
@@ -32,19 +34,24 @@ public class WishListServiceImpl implements WishListService {
     }
 
     @Override
-    public void removeProduct(Long productId, String email){
-        this.wishListRepository.deleteByProduct_IdAndUser_Email(productId, email);
+    public void removeProduct(Long itemId, Long activityId, String email){
+        this.wishListRepository.deleteByItem_IdOrActivity_IdAndUser_Email(itemId, activityId, email);
     }
 
     @Override
     public void addProduct(WishList wishList){
-        if(wishListRepository.isProductLiked(wishList.getProduct().getId(), wishList.getUser().getEmail())) return;
+        if(wishListRepository.isItemOrActivityLiked(wishList.getItem().getId(), wishList.getActivity().getId(), wishList.getUser().getEmail())) return;
         this.wishListRepository.save(wishList);
     }
 
     @Override
-    public Boolean isProductLiked(String email, Long productId) {
-        return wishListRepository.isProductLiked(productId, email);
+    public Boolean isProductLiked(String email, Long itemId, Long activityId) {
+        return wishListRepository.isItemOrActivityLiked(itemId, activityId, email);
+    }
+
+    @Override
+    public Boolean isItem(Long productId) {
+        return itemRepository.findById(productId).isPresent();
     }
 }
 

@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface WishListRepository extends JpaRepository<WishList, Long> {
     List<WishList> findByUser_Email(String userEmail);
-    @Query("SELECT COUNT(w) > 0 FROM WishList w WHERE w.product.id = :productId AND w.user.email = :email")
-    Boolean isProductLiked(Long productId, String email);
+    @Query("SELECT COUNT(w) > 0 FROM WishList w WHERE (w.item.id = :itemId OR w.activity.id = :activityId) AND w.user.email = :email")
+    Boolean isItemOrActivityLiked(Long itemId, Long activityId, String email);
     void deleteByUser_Email(String email);
-    void deleteByProduct_IdAndUser_Email(Long productId, String email);
+    void deleteByItem_IdOrActivity_IdAndUser_Email(Long itemId, Long activityId, String email);
 }

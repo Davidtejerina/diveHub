@@ -91,12 +91,17 @@ VALUES
 --     (2, 1, 1);
 
 
-INSERT INTO Wish_list (user_id, product_id)
+INSERT INTO Wishlist (user_id, item_id, activity_id)
 VALUES
-    (1, 1),
-    (1, 3),
-    (2, 2),
-    (2, 1);
+    (1, 5, NULL),
+    (1, NULL, 1),
+    (1, 8, NULL),
+    (1, 10, NULL),
+    (1, NULL, 1),
+    (2, 5, NULL),
+    (2, NULL, 1),
+    (2, 14, NULL),
+    (2, 21, NULL);
 
 INSERT INTO Messages (email, content, date)
 VALUES

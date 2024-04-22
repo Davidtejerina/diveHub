@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/diveHub/wishes")
+@RequestMapping("/divehub/wishes")
 @RequiredArgsConstructor
 @CrossOrigin
 public class WishListController {
@@ -24,16 +24,17 @@ public class WishListController {
     public ResponseEntity<List<WishList>> getListByUser(
             @PathVariable String email
     ){
-        return ResponseEntity.ok(this.wishListService.getListByUser(email));
+        return ResponseEntity.ok(wishListService.getListByUser(email));
     }
 
 
-    @GetMapping("/{email}/{product}")
+    @GetMapping("/{email}/{productId}")
     public ResponseEntity<Boolean> isProductOnWishList (
             @PathVariable String email,
-            @PathVariable Long product
+            @PathVariable Long productId
     ){
-        return ResponseEntity.ok(this.wishListService.isProductLiked(email, product));
+        if (wishListService.isItem(productId)) return ResponseEntity.ok(wishListService.isProductLiked(email, productId, null));
+        return ResponseEntity.ok(wishListService.isProductLiked(email, null, productId));
     }
 
 
@@ -48,12 +49,13 @@ public class WishListController {
     }
 
 
-    @DeleteMapping("/clean/{email}/{id}")
+    @DeleteMapping("/clean/{email}/{productId}")
     public ResponseEntity<?> removeProduct(
-            @PathVariable Long id,
-            @PathVariable String email
+            @PathVariable String email,
+            @PathVariable Long productId
     ){
-        this.wishListService.removeProduct(id, email);
+        if(wishListService.isItem(productId)) wishListService.removeProduct(productId, null, email);
+        else wishListService.removeProduct(null, productId, email);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
