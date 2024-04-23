@@ -5,6 +5,7 @@ import alexDavid.mappers.WishListMapper;
 import alexDavid.models.WishList;
 import alexDavid.service.WishListService.WishListService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ import java.util.List;
 @RequestMapping("/divehub/wishes")
 @RequiredArgsConstructor
 @CrossOrigin
+@Slf4j
 public class WishListController {
     private final WishListService wishListService;
     private final WishListMapper wishListMapper;
@@ -28,7 +30,7 @@ public class WishListController {
     }
 
 
-    @GetMapping("/{email}/{productId}")
+    @GetMapping("/{productId}/{email}")
     public ResponseEntity<Boolean> isProductOnWishList (
             @PathVariable String email,
             @PathVariable Long productId
@@ -38,24 +40,31 @@ public class WishListController {
     }
 
 
+    @GetMapping("/findType/{productId}")
+    public ResponseEntity<Boolean> isItemOrActivity (
+            @PathVariable Long productId
+    ){
+        return ResponseEntity.ok(wishListService.isItem(productId));
+    }
+
+
     @PostMapping("/add")
     public ResponseEntity<?> addProduct(
             @RequestBody WishListRequestDto wishListRequestDto
     ){
         WishList wishList = wishListMapper.toModel(wishListRequestDto);
         wishListService.addProduct(wishList);
-
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
 
-    @DeleteMapping("/clean/{email}/{productId}")
-    public ResponseEntity<?> removeProduct(
-            @PathVariable String email,
-            @PathVariable Long productId
+    @DeleteMapping("/clean/{productId}/{email}")
+    public ResponseEntity<?> removeProduct (
+        @PathVariable Long productId,
+        @PathVariable String email
     ){
-        if(wishListService.isItem(productId)) wishListService.removeProduct(productId, null, email);
-        else wishListService.removeProduct(null, productId, email);
+        if (wishListService.isItem(productId)) wishListService.removeItem(productId, email);
+        else wishListService.removeActivity(productId, email);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -64,7 +73,7 @@ public class WishListController {
     public ResponseEntity<?> removeAllProducts(
             @PathVariable String email
     ){
-        this.wishListService.cleanWishList(email);
+        wishListService.cleanWishList(email);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

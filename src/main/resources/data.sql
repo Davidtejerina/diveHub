@@ -97,7 +97,7 @@ VALUES
     (1, NULL, 1),
     (1, 8, NULL),
     (1, 10, NULL),
-    (1, NULL, 1),
+    (1, NULL, 3),
     (2, 5, NULL),
     (2, NULL, 1),
     (2, 14, NULL),

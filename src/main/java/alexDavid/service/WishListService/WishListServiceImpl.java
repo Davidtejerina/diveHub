@@ -34,14 +34,19 @@ public class WishListServiceImpl implements WishListService {
     }
 
     @Override
-    public void removeProduct(Long itemId, Long activityId, String email){
-        this.wishListRepository.deleteByItem_IdOrActivity_IdAndUser_Email(itemId, activityId, email);
+    public void removeItem(Long itemId, String email) {
+        wishListRepository.deleteByItem_IdAndUser_Email(itemId, email);
+    }
+
+    @Override
+    public void removeActivity(Long activityId, String email) {
+        wishListRepository.deleteByActivity_IdAndUser_Email(activityId, email);
     }
 
     @Override
     public void addProduct(WishList wishList){
-        if(wishListRepository.isItemOrActivityLiked(wishList.getItem().getId(), wishList.getActivity().getId(), wishList.getUser().getEmail())) return;
-        this.wishListRepository.save(wishList);
+        if(wishList.getItem()==null && wishList.getActivity()==null) return;
+        wishListRepository.save(wishList);
     }
 
     @Override
