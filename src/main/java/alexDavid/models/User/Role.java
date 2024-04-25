@@ -24,7 +24,6 @@ public enum Role {
                     ADMIN_UPDATE,
                     ADMIN_DELETE,
                     ADMIN_CREATE,
-                    // Podemos añadir permisos de otros roles
                     MANAGER_READ,
                     MANAGER_UPDATE,
                     MANAGER_DELETE,

@@ -78,6 +78,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public void updateLogin(String email) {
         User user = userDetailsRepository.findByEmail(email);
         user.setLast_login(LocalDateTime.now());
+        this.save(user);
     }
 
 
@@ -87,5 +88,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     public boolean existNickname(String nickname){
         return userDetailsRepository.existsByNickname(nickname);
+    }
+
+    public boolean isAdmin(String email) {
+        User user = loadUserByUserEmail(email);
+        return user != null && user.getRole() == Role.ADMIN;
     }
 }

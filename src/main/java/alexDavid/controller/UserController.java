@@ -36,6 +36,14 @@ public class UserController {
     }
 
 
+    @GetMapping("/isAdmin/{email}")
+    public ResponseEntity<Boolean> getUserIsAdmin(
+            @PathVariable String email
+    ) {
+        return ResponseEntity.ok(userService.isAdmin(email));
+    }
+
+
     @PutMapping("/{email}")
     public ResponseEntity<UserResponseDto> updateUser(
             @PathVariable String email,
