@@ -113,4 +113,5 @@ VALUES
 INSERT INTO Cart (user_id, product_id, quantity)
 values
     (1,1,1),
-    (2,3,6)
+    (2,3,6),
+    (1,2,3);

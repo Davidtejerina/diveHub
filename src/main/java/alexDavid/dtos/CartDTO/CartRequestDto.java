@@ -9,7 +9,7 @@ import java.util.List;
 
 @Data
 public class CartRequestDto {
-    private final Long UserId;
+    private final User user;
     private final Long ProductId;
     private final Integer quantity;
 }

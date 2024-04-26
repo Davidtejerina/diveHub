@@ -1,6 +1,7 @@
 package alexDavid.service.CartService;
 
 import alexDavid.models.Cart;
+import alexDavid.models.Product;
 import alexDavid.models.WishList;
 import alexDavid.repository.CartRepository;
 import alexDavid.repository.ProductRepository;
@@ -17,39 +18,51 @@ public class CartServiceImpl implements CartService {
     private final CartRepository cartRepository;
     private final ProductRepository productRepository;
 
+
     @Override
-    public List<Cart> findAll() {
-        return cartRepository.findAll();
+    public List<Cart> getListByUser(String email){
+        return this.cartRepository.findByUser_Email(email);
     }
 
     @Override
-    public List<Long> findAllByUser (Long userId){
-        return cartRepository.findByUserId(userId);
+    public void cleanCart(String email){
+        this.cartRepository.deleteByUser_Email(email);
     }
 
-   /* public void addProductCart(Long userId, Long productId) {
-        // Buscar si existe un registro en el carrito para el productId y userId especificados
-        Cart cartItem = cartRepository.findByUserIdAndProductId(userId, productId);
-
-        if (cartItem != null) {
-            // Si el registro ya existe, incrementar la cantidad
-            cartItem.setQuantity(cartItem.getQuantity() );
-        } else {
-            // Si el registro no existe, crear uno nuevo
-            cartItem = new Cart();
-            cartItem.setUserId(userId);
-            cartItem.setProductId(productId);
-            cartItem.setQuantity(1);
-        }
-
-        cartRepository.save(cartItem);
-    }*/
 
     @Override
-    public void removeByUserID(Long userId) {
-        this.cartRepository.deleteCartByUserId(userId);
+    public void addProduct(Cart cart){
+        this.cartRepository.save(cart);
     }
 
+    @Override
+    public Long getCountByClient(String email){
+        return this.cartRepository.countByUser_Email(email);
+    }
 
+    @Override
+    public double getTotalPriceByEmail(String email) {
+        List<Cart> cartItems = getListByUser(email);
+        return cartItems.stream()
+                .mapToDouble(cart -> productRepository.findById(cart.getProductId()).get().getFinal_price() * cart.getQuantity())
+                .sum();
+    }
+
+    @Override
+    public void updateProductQuantity(String user_email, Long productId, Integer quantity) {
+        Cart cart = cartRepository.findByUser_EmailAndProductId(user_email, productId);
+        cart.setQuantity(quantity);
+        cartRepository.save(cart);
+    }
+
+    @Override
+    public boolean isProductInCart(Cart cart) {
+        return cartRepository.findByUser_EmailAndProductId(cart.getUser().getEmail(), cart.getProductId()) != null;
+    }
+
+    @Override
+    public void removeProduct(String email, Long productId) {
+        cartRepository.deleteByUser_EmailAndProductId(email, productId);
+    }
 }
 

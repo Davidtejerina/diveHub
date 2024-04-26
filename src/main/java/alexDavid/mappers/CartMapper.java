@@ -13,7 +13,7 @@ public class CartMapper {
     public CartResponseDto toResponse(Cart cart) {
         return new CartResponseDto(
                 cart.getId(),
-                cart.getUserId(),
+                cart.getUser(),
                 cart.getProductId(),
                 cart.getQuantity()
         );
@@ -29,7 +29,7 @@ public class CartMapper {
 
         return new Cart(
                 null,
-                cartDto.getUserId(),
+                cartDto.getUser(),
                 cartDto.getProductId(),
                 cartDto.getQuantity()
         );
