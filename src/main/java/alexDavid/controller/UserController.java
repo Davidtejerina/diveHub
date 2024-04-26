@@ -1,14 +1,11 @@
 package alexDavid.controller;
 
-import alexDavid.Contact.MessageService;
 import alexDavid.dtos.UserDto.UserRequestDto;
 import alexDavid.dtos.UserDto.UserResponseDto;
 import alexDavid.mappers.UserMapper;
 import alexDavid.service.UserDetailsServiceImpl;
-import alexDavid.service.WishListService.WishListService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,10 +16,8 @@ import java.util.List;
 @RequiredArgsConstructor
 @CrossOrigin
 public class UserController {
+
     private final UserDetailsServiceImpl userService;
-    private final WishListService wishListService;
-    private final MessageService messageService;
-    //private final ProductCart productCart;
     private final UserMapper userMapper;
 
 
@@ -40,15 +35,6 @@ public class UserController {
         return ResponseEntity.ok(userMapper.toResponse(userService.loadUserByUserEmail(email)));
     }
 
-
-    @GetMapping("/isAdmin/{email}")
-    public ResponseEntity<Boolean> getUserIsAdmin(
-            @PathVariable String email
-    ) {
-        return ResponseEntity.ok(userService.isAdmin(email));
-    }
-
-
     @PutMapping("/{email}")
     public ResponseEntity<UserResponseDto> updateUser(
             @PathVariable String email,
@@ -58,16 +44,6 @@ public class UserController {
     }
 
 
-    @DeleteMapping("/{email}")
-    public ResponseEntity<?> deleteUser(
-            @PathVariable String email
-    ) {
-        //productCart.delete(email);
-        messageService.deleteAllMessages(email);
-        wishListService.cleanWishList(email);
-        userService.deleteUser(email);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
 }
 
 

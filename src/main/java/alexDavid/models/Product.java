@@ -22,4 +22,6 @@ public abstract class Product {
     private String image;
     private Category category;
     private String tag;
+
+
 }

@@ -73,9 +73,7 @@ INSERT INTO activity (id, level_required, time_starts, time_ends, available_spac
 INSERT INTO user_ (nickname, password, name, surnames, email, phone, birthday, address, level, registration_date, last_login, role)
 VALUES
     ('RashBack', '$2a$12$K4tojeaYWMK55KzWzDWtLOuuUjRTkycWhSGHYWA2LXMZqmZUtuXPO', 'David', 'Tejerina', 'davidtejerina2003@gmail.com', 630156482, '2000-03-22 16:00:00', 'Getafe', 0, NOW(), NOW(), 0),
-    ('ElDon', '$2a$12$K4tojeaYWMK55KzWzDWtLOuuUjRTkycWhSGHYWA2LXMZqmZUtuXPO', 'Alex', 'Peña', 'a', 630926482, '1997-03-22 16:00:00', 'Pinto', 2, NOW(), '2024-04-22 22:11:21.928365	', 0),
-    ('Marian1234', '$2a$12$K4tojeaYWMK55KzWzDWtLOuuUjRTkycWhSGHYWA2LXMZqmZUtuXPO', 'Maria', 'Lozano', 'b', 622922433, '1997-03-22 16:00:00', 'Pinto', 2, NOW(), '2024-04-25 12:01:21.928365	', 0),
-    ('Juanchi', '$2a$12$K4tojeaYWMK55KzWzDWtLOuuUjRTkycWhSGHYWA2LXMZqmZUtuXPO', 'Juan', 'Pastor', 'c', 609876481, '1997-03-22 16:00:00', 'Pinto', 2, NOW(), '2024-02-16 10:08:11.928365	', 0),
+    ('ElDon', '$2a$12$K4tojeaYWMK55KzWzDWtLOuuUjRTkycWhSGHYWA2LXMZqmZUtuXPO', 'Alex', 'Peña', 'a', 630926482, '1997-03-22 16:00:00', 'Pinto', 2, NOW(), NOW(), 0),
     ('Administrador', '$2a$12$K4tojeaYWMK55KzWzDWtLOuuUjRTkycWhSGHYWA2LXMZqmZUtuXPO', 'Administrador', 'Administrador', 'admin', null, null, null, null, null, null, 1);
 
 
@@ -93,17 +91,12 @@ VALUES
 --     (2, 1, 1);
 
 
-INSERT INTO Wishlist (user_id, item_id, activity_id)
+INSERT INTO Wish_list (user_id, product_id)
 VALUES
-    (1, 5, NULL),
-    (1, NULL, 1),
-    (1, 8, NULL),
-    (1, 10, NULL),
-    (1, NULL, 3),
-    (2, 5, NULL),
-    (2, NULL, 1),
-    (2, 14, NULL),
-    (2, 21, NULL);
+    (1, 1),
+    (1, 3),
+    (2, 2),
+    (2, 1);
 
 INSERT INTO Messages (email, content, date)
 VALUES
@@ -113,5 +106,12 @@ VALUES
     ('a', 'Hola amigo/a, ¿cómo va todo? Espero que estés disfrutando de tus actividades diarias. Recuerda que la vida está llena de altibajos, pero lo importante es mantener una actitud positiva y seguir adelante con determinación. ¡Ánimo!', NOW()-240),
     ('a', 'Buenas tardes. Espero que estés teniendo un día increíble hasta ahora. Recuerda tomarte un momento para apreciar las cosas hermosas que te rodean. La vida está llena de pequeñas alegrías esperando ser descubiertas. ¡Disfruta cada momento!', NOW()-220),
     ('davidtejerina2003@gmail.com', '¿Cómo estás hoy? Espero que estés bien. Si estás pasando por un momento difícil, recuerda que siempre hay personas dispuestas a ayudarte. No dudes en buscar el apoyo que necesitas. La vida es un viaje compartido.', NOW()-100),
-    ('davidtejerina2003@gmail.com', 'Hola, ¿qué tal estás? Espero que estés disfrutando de un día maravilloso. No olvides detenerte de vez en cuando para apreciar las cosas simples de la vida. A veces, son esas pequeñas cosas las que hacen la mayor diferencia.', NOW()-200),
-    ('davidtejerina2003@gmail.com', 'Buenas noches. Espero que hayas tenido un día lleno de momentos especiales. Recuerda que cada día es una oportunidad para crecer y aprender algo nuevo. Descansa bien esta noche y prepárate para un nuevo día lleno de posibilidades.', NOW());
+    ('b', 'Hola, ¿qué tal estás? Espero que estés disfrutando de un día maravilloso. No olvides detenerte de vez en cuando para apreciar las cosas simples de la vida. A veces, son esas pequeñas cosas las que hacen la mayor diferencia.', NOW()-200),
+    ('b', 'Buenas noches. Espero que hayas tenido un día lleno de momentos especiales. Recuerda que cada día es una oportunidad para crecer y aprender algo nuevo. Descansa bien esta noche y prepárate para un nuevo día lleno de posibilidades.', NOW());
+
+
+INSERT INTO Cart (user_id, product_id, quantity)
+values
+    (1,1,1),
+    (2,3,6),
+    (1,2,3);

@@ -95,20 +95,20 @@
 //        userDetailsService.save(user);
 //    }
 //
-//    public void createFakeCartsForUser(int number) {
-//        if (number <= 0) return;
-//
-//        List<Product> products = productService.findAll();
-//        for (int i = 0; i < number; i++) {
-//            Cart cart = new Cart(
-//                    null,
-//                    userDetailsService.loadUserByUserEmail("user"),
-//                    products.get(i),
-//                    faker.number().numberBetween(1, 5)
-//            );
-//            cartService.save(cart);
-//        }
-//    }
+////    public void createFakeCartsForUser(int number) {
+////        if (number <= 0) return;
+////
+////        List<Product> products = productService.findAll();
+////        for (int i = 0; i < number; i++) {
+////            Cart cart = new Cart(
+////                    null,
+////                    userDetailsService.loadUserByUserEmail("user"),
+////                    products.get(i),
+////                    faker.number().numberBetween(1, 5)
+////            );
+////            cartService.save(cart);
+////        }
+////    }
 //
 //    public void createFakeWishListsForUser(int number) {
 //        if (number <= 0) return;

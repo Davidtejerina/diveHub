@@ -5,8 +5,7 @@ import alexDavid.Auth.JwtAuthenticationFilter;
 import alexDavid.repository.UserDetailsRepository;
 import alexDavid.service.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.*;
@@ -34,7 +33,7 @@ import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 public class SecurityConfiguration {
 
     private final UserDetailsRepository userDetailsRepository;
-    private static final Logger logger = LoggerFactory.getLogger(SecurityConfiguration.class);
+
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http, MvcRequestMatcher.Builder mvc) throws Exception {
@@ -69,6 +68,7 @@ public class SecurityConfiguration {
                         .requestMatchers(mvc.pattern("/divehub/activities/available")).permitAll()
                         .requestMatchers(mvc.pattern("/divehub/activities/available_spaces/{id}")).permitAll()
                         .requestMatchers(mvc.pattern("/divehub/activities/remaining-time/{id}")).permitAll()
+                        .requestMatchers(mvc.pattern("/divehub/carts/all/{email}")).permitAll()
                         .requestMatchers(h2ConsoleMatcher).permitAll()
                         .anyRequest().authenticated()
                 )
