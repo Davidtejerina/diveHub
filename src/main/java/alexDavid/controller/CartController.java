@@ -42,7 +42,7 @@ public class CartController {
     }
 
 
-    @GetMapping("/updateQuantity/{user_email}/{product_id}/{quantity}")
+    @GetMapping("/updateQuantity/{product_id}/{quantity}/{user_email}")
     public ResponseEntity<?> updateProductQuantity(
             @PathVariable String user_email,
             @PathVariable Long product_id,
