@@ -9,9 +9,6 @@ import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 @Data
-@NoArgsConstructor(force = true)
-@RequiredArgsConstructor
-@Builder
 public class UserResponseDto {
     private final Long id;
     private final String nickname;

@@ -1,5 +1,7 @@
 package alexDavid.dtos.UserDto;
 
+import alexDavid.models.Level;
+import alexDavid.models.User.Role;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,9 +9,6 @@ import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 @Data
-@NoArgsConstructor(force = true)
-@RequiredArgsConstructor
-@Builder
 public class UserRequestDto {
     private final String nickname;
     private final String password;
@@ -19,4 +18,5 @@ public class UserRequestDto {
     private final Integer phone;
     private final LocalDateTime birthday;
     private final String address;
+    private final Level level;
 }

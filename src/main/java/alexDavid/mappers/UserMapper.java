@@ -43,7 +43,7 @@ public class UserMapper {
                 userDto.getPhone(),
                 userDto.getBirthday(),
                 userDto.getAddress(),
-                null,
+                userDto.getLevel(),
                 null,
                 null,
                 null
