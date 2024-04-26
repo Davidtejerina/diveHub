@@ -68,6 +68,8 @@ public class SecurityConfiguration {
                         .requestMatchers(mvc.pattern("/divehub/activities/available")).permitAll()
                         .requestMatchers(mvc.pattern("/divehub/activities/available_spaces/{id}")).permitAll()
                         .requestMatchers(mvc.pattern("/divehub/activities/remaining-time/{id}")).permitAll()
+                        .requestMatchers(mvc.pattern("/divehub/cart/all")).permitAll()
+                        .requestMatchers(mvc.pattern("/divehub/cart/{id}")).permitAll()
                         .requestMatchers(h2ConsoleMatcher).permitAll()
                         .anyRequest().authenticated()
                 )

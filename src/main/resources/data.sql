@@ -108,3 +108,9 @@ VALUES
     ('davidtejerina2003@gmail.com', '¿Cómo estás hoy? Espero que estés bien. Si estás pasando por un momento difícil, recuerda que siempre hay personas dispuestas a ayudarte. No dudes en buscar el apoyo que necesitas. La vida es un viaje compartido.', NOW()-100),
     ('b', 'Hola, ¿qué tal estás? Espero que estés disfrutando de un día maravilloso. No olvides detenerte de vez en cuando para apreciar las cosas simples de la vida. A veces, son esas pequeñas cosas las que hacen la mayor diferencia.', NOW()-200),
     ('b', 'Buenas noches. Espero que hayas tenido un día lleno de momentos especiales. Recuerda que cada día es una oportunidad para crecer y aprender algo nuevo. Descansa bien esta noche y prepárate para un nuevo día lleno de posibilidades.', NOW());
+
+
+INSERT INTO Cart (user_id, product_id, quantity)
+values
+    (1,1,1),
+    (2,3,6)

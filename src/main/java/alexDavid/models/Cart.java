@@ -1,6 +1,5 @@
 package alexDavid.models;
 
-import alexDavid.models.User.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,20 +9,17 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "product_cart")
-public class ProductCart {
+@Table(name = "cart")
+public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private User user;
+    @Column(name = "user_id")
+    private Long userId;
 
-    @ManyToOne
-    private Item item;
-
-    @ManyToOne
-    private Activity activity;
+    @Column(name = "product_id")
+    private Long productId;
 
     private Integer quantity;
 
