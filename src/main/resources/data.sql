@@ -107,7 +107,7 @@ VALUES
 
 
 
-INSERT INTO Cart (user_id, productId, quantity)
+INSERT INTO Cart (user_id, product_id, quantity)
 VALUES
     (1, 1, 1),
     (1, 3, 1),
