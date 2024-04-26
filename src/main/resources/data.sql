@@ -78,18 +78,6 @@ VALUES
 
 
 
--- INSERT INTO Cart (user_id, product_id, amount)
--- VALUES
---     (1, 1, 1),
---     (1, 3, 1),
---     (1, 4, 1),
---     (1, 5, 1),
---     (1, 6, 1),
---     (1, 7, 1),
---     (1, 3, 1),
---     (2, 2, 7),
---     (2, 1, 1);
-
 
 INSERT INTO Wish_list (user_id, product_id)
 VALUES
@@ -97,6 +85,7 @@ VALUES
     (1, 3),
     (2, 2),
     (2, 1);
+
 
 INSERT INTO Messages (email, content, date)
 VALUES
@@ -110,8 +99,15 @@ VALUES
     ('b', 'Buenas noches. Espero que hayas tenido un día lleno de momentos especiales. Recuerda que cada día es una oportunidad para crecer y aprender algo nuevo. Descansa bien esta noche y prepárate para un nuevo día lleno de posibilidades.', NOW());
 
 
-INSERT INTO Cart (user_id, product_id, quantity)
-values
-    (1,1,1),
-    (2,3,6),
-    (1,2,3);
+
+INSERT INTO Cart (user_id, productId, quantity)
+VALUES
+    (1, 1, 1),
+    (1, 3, 1),
+    (1, 4, 1),
+    (1, 5, 1),
+    (1, 6, 1),
+    (1, 7, 1),
+    (1, 3, 1),
+    (2, 2, 7),
+    (2, 1, 1);

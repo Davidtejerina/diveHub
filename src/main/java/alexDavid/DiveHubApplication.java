@@ -1,10 +1,7 @@
 package alexDavid;
 
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-/*import alexDavid.service.InitialDataCreationService;*/
 
 @SpringBootApplication
 public class DiveHubApplication {
@@ -21,16 +18,4 @@ public class DiveHubApplication {
 		System.out.println("*                                                                                                                                                                          			     						   *");
 		System.out.println("********************************************************************************************************************************************************************************************************************");
 	}
-
-
-//	@Bean
-//	public CommandLineRunner init(InitialDataCreationService service) {
-//		return args -> {
-//			service.createFakeUser();
-//			service.createFakeProducts(20);
-//			service.createFakeCartsForUser(3);
-//			service.createFakeWishListsForUser(5);
-//		};
-//	}
-
 }

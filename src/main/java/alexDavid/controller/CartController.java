@@ -1,8 +1,6 @@
 package alexDavid.controller;
 
 import alexDavid.dtos.CartDTO.CartRequestDto;
-import alexDavid.dtos.CartDTO.CartResponseDto;
-import alexDavid.dtos.ProductDto.ProductResponseDto;
 import alexDavid.mappers.CartMapper;
 import alexDavid.models.Cart;
 import alexDavid.service.CartService.CartService;
@@ -10,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -25,14 +22,14 @@ public class CartController {
     public ResponseEntity<List<Cart>> getListByUser(
             @PathVariable String email
     ){
-        return ResponseEntity.ok(this.cartService.getListByUser(email));
+        return ResponseEntity.ok(cartService.getListByUser(email));
     }
 
     @GetMapping("/count/{email}")
     public ResponseEntity<Long> countByClient(
             @PathVariable String email
     ){
-        return ResponseEntity.ok(this.cartService.getCountByClient(email));
+        return ResponseEntity.ok(cartService.getCountByClient(email));
     }
 
 
@@ -51,7 +48,7 @@ public class CartController {
             @PathVariable Long product_id,
             @PathVariable Integer quantity
     ){
-        this.cartService.updateProductQuantity(user_email, product_id, quantity);
+        cartService.updateProductQuantity(user_email, product_id, quantity);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
