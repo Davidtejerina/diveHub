@@ -12,7 +12,6 @@ import java.util.List;
 
 @Service
 @Transactional
-@Slf4j
 @RequiredArgsConstructor
 public class WishListServiceImpl implements WishListService {
     private final WishListRepository wishListRepository;

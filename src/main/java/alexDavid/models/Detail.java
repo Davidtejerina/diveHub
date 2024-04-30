@@ -18,8 +18,6 @@ public class Detail {
     @ManyToOne
     private Order order;
 
-    @ManyToOne
-    private Product product;
-
-    private Integer amount;
+    private Long productId;
+    private Integer quantity;
 }

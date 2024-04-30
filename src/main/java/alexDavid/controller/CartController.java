@@ -5,6 +5,7 @@ import alexDavid.mappers.CartMapper;
 import alexDavid.models.Cart;
 import alexDavid.service.CartService.CartService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -63,19 +64,23 @@ public class CartController {
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    @DeleteMapping("/clean/{email}/{productId}")
+
+
+    @DeleteMapping("/clean/{productId}/{email}")
     public ResponseEntity<?> removeProduct(
-            @PathVariable String email,
-            @PathVariable Long productId
+            @PathVariable Long productId,
+            @PathVariable String email
     ){
-        this.cartService.removeProduct(email, productId);
+        cartService.removeProduct(email, productId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
     @DeleteMapping("/cleanAll/{email}")
     public ResponseEntity<?> removeAllProducts(
             @PathVariable String email
     ){
-        this.cartService.cleanCart(email);
+        cartService.cleanCart(email);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

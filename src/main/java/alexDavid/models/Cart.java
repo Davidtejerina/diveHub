@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "cart")
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,9 +18,6 @@ public class Cart {
     @ManyToOne
     private User user;
 
-    @Column(name = "product_id")
     private Long productId;
-
     private Integer quantity;
-
 }

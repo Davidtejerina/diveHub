@@ -9,13 +9,14 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class CartServiceImpl implements CartService {
-
     private final CartRepository cartRepository;
     private final ProductRepository productRepository;
 
@@ -30,10 +31,9 @@ public class CartServiceImpl implements CartService {
         this.cartRepository.deleteByUser_Email(email);
     }
 
-
     @Override
     public void addProduct(Cart cart){
-        this.cartRepository.save(cart);
+        cartRepository.save(cart);
     }
 
     @Override

@@ -10,6 +10,6 @@ import java.util.List;
 @Data
 public class CartRequestDto {
     private final User user;
-    private final Long ProductId;
+    private final Long productId;
     private final Integer quantity;
 }
