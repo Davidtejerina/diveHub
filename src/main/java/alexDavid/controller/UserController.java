@@ -4,6 +4,9 @@ import alexDavid.Contact.MessageService;
 import alexDavid.dtos.UserDto.UserRequestDto;
 import alexDavid.dtos.UserDto.UserResponseDto;
 import alexDavid.mappers.UserMapper;
+import alexDavid.service.CartService.CartService;
+import alexDavid.service.DetailService.DetailService;
+import alexDavid.service.OrderService.OrderService;
 import alexDavid.service.UserDetailsServiceImpl;
 import alexDavid.service.WishListService.WishListService;
 import lombok.RequiredArgsConstructor;
@@ -22,8 +25,10 @@ public class UserController {
     private final UserDetailsServiceImpl userService;
     private final WishListService wishListService;
     private final MessageService messageService;
-    //private final ProductCart productCart;
+    private final CartService cartService;
+    private final DetailService detailService;
     private final UserMapper userMapper;
+    private final OrderService orderService;
 
 
     @GetMapping
@@ -62,7 +67,9 @@ public class UserController {
     public ResponseEntity<?> deleteUser(
             @PathVariable String email
     ) {
-        //productCart.delete(email);
+        cartService.cleanCart(email);
+        detailService.deleteByUser(email);
+        orderService.deleteByUser(email);
         messageService.deleteAllMessages(email);
         wishListService.cleanWishList(email);
         userService.deleteUser(email);

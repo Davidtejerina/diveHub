@@ -62,6 +62,11 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
+    public boolean isProductInCart(String userEmail, Long productId) {
+        return cartRepository.findByUser_EmailAndProductId(userEmail, productId) != null;
+    }
+
+    @Override
     public void removeProduct(String email, Long productId) {
         cartRepository.deleteByUser_EmailAndProductId(email, productId);
     }

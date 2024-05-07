@@ -54,6 +54,15 @@ public class CartController {
     }
 
 
+    @GetMapping("/exists/{product_id}/{user_email}")
+    public ResponseEntity<Boolean> existsProduct(
+            @PathVariable String user_email,
+            @PathVariable Long product_id
+    ){
+        return new ResponseEntity<>(cartService.isProductInCart(user_email, product_id), HttpStatus.OK);
+    }
+
+
     @PostMapping
     public ResponseEntity<?> addProduct(
             @RequestBody CartRequestDto cartRequestDto

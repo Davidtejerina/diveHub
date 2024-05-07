@@ -17,6 +17,6 @@ public interface CartService {
     double getTotalPriceByEmail(String email);
     void updateProductQuantity(String user_email, Long productId, Integer quantity);
     boolean isProductInCart(Cart cart);
+    boolean isProductInCart(String userEmail, Long productId);
     void removeProduct(String email, Long productId);
-
 }
