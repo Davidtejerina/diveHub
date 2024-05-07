@@ -1,15 +1,13 @@
-package alexDavid.dtos.UserDto;
+package alexDavid.dtos.UserDTO;
 
 import alexDavid.models.Level;
 import alexDavid.models.User.Role;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 @Data
-public class UserRequestDto {
+public class UserResponseDto {
+    private final Long id;
     private final String nickname;
     private final String password;
     private final String name;
@@ -19,4 +17,7 @@ public class UserRequestDto {
     private final LocalDateTime birthday;
     private final String address;
     private final Level level;
+    private final LocalDateTime registration_date;
+    private final LocalDateTime last_login;
+    private final Role role;
 }

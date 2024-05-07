@@ -1,11 +1,8 @@
-package alexDavid.dtos.DetailDto;
+package alexDavid.dtos.DetailDTO;
 
 
 import alexDavid.models.Order;
-import alexDavid.models.User.User;
 import lombok.Data;
-
-import java.time.LocalDateTime;
 
 @Data
 public class DetailResponseDto {

@@ -44,17 +44,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void deleteById(Long id) {
-        productRepository.deleteById(id);
-    }
-
-    @Override
-    public List<Product> findAllByOrderByFinal_priceDesc() {
-        return productRepository.findAllOrderByFinal_price();
-    }
-
-    @Override
-    public List<Product> findAllByOrderByFinal_priceAsc() {
-        return productRepository.findAllOrderByFinal_priceAsc();
+    public Boolean getIsItem(Long id) {
+        return this.findById(id).getCategory().toString().equals("PRODUCT");
     }
 }

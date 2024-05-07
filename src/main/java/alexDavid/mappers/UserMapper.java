@@ -1,7 +1,7 @@
 package alexDavid.mappers;
 
-import alexDavid.dtos.UserDto.UserRequestDto;
-import alexDavid.dtos.UserDto.UserResponseDto;
+import alexDavid.dtos.UserDTO.UserRequestDto;
+import alexDavid.dtos.UserDTO.UserResponseDto;
 import alexDavid.models.User.User;
 import org.springframework.stereotype.Component;
 

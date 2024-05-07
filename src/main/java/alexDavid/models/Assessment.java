@@ -20,5 +20,6 @@ public class Assessment {
     private User user;
 
     private String content;
+    private Integer stars;
     private Long productId;
 }

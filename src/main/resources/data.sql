@@ -110,10 +110,37 @@ VALUES
 INSERT INTO Cart (user_id, product_id, quantity)
 VALUES
     (1, 1, 1),
-    (1, 3, 3),
-    (1, 4, 2),
+    (1, 3, 1),
+    (1, 4, 1),
     (1, 5, 1),
     (1, 6, 1),
-    (1, 7, 3),
-    (2, 2, 7),
+    (1, 7, 1),
+    (2, 2, 5),
     (2, 1, 1);
+
+
+
+INSERT INTO my_order (user_id, total, address, date)
+VALUES
+    (1, 1, 'Getafe', NOW()),
+    (1, 3, 'Getafe', NOW()),
+    (1, 4, 'Getafe', NOW()),
+    (1, 5, 'Getafe', NOW()),
+    (1, 6, 'Getafe', NOW()),
+    (1, 7, 'Getafe', NOW()),
+    (5, 2, 'Getafe', NOW()),
+    (5, 1, 'Getafe', NOW());
+
+
+
+INSERT INTO line_order (order_id, product_id, quantity)
+VALUES
+    (1, 1, 1),
+    (1, 3, 1),
+    (1, 4, 1),
+    (1, 5, 3),
+    (1, 6, 1),
+    (1, 7, 1),
+    (5, 2, 3),
+    (5, 1, 1);
+

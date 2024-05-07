@@ -11,7 +11,5 @@ public interface ProductService {
     List<Product> findAll();
     List<Product> findProductsByTagIgnoreCase(String tag);
     List<Product> findByNameContainsIgnoreCase(String name);
-    List<Product> findAllByOrderByFinal_priceDesc();
-    List<Product> findAllByOrderByFinal_priceAsc();
-    void deleteById(Long id);
+    Boolean getIsItem(Long id);
 }

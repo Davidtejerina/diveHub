@@ -1,6 +1,6 @@
 package alexDavid.controller;
 
-import alexDavid.dtos.WishListDto.WishListRequestDto;
+import alexDavid.dtos.WishListDTO.WishListRequestDto;
 import alexDavid.mappers.WishListMapper;
 import alexDavid.models.WishList;
 import alexDavid.service.WishListService.WishListService;
