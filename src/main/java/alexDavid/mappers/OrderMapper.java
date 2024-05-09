@@ -1,7 +1,7 @@
 package alexDavid.mappers;
 
-import alexDavid.dtos.OrderDto.OrderRequestDto;
-import alexDavid.dtos.OrderDto.OrderResponseDto;
+import alexDavid.dtos.OrderDTO.OrderRequestDto;
+import alexDavid.dtos.OrderDTO.OrderResponseDto;
 import alexDavid.models.Order;
 import org.springframework.stereotype.Component;
 

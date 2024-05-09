@@ -1,6 +1,6 @@
 package alexDavid.mappers;
 
-import alexDavid.dtos.WishListDto.WishListRequestDto;
+import alexDavid.dtos.WishListDTO.WishListRequestDto;
 import alexDavid.models.WishList;
 import org.springframework.stereotype.Component;
 

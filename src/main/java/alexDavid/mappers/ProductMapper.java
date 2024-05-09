@@ -1,8 +1,7 @@
 package alexDavid.mappers;
 
-import alexDavid.dtos.ProductDto.ProductResponseDto;
+import alexDavid.dtos.ProductDTO.ProductResponseDto;
 import alexDavid.models.Product;
-import alexDavid.models.User.User;
 import org.springframework.stereotype.Component;
 import java.util.List;
 

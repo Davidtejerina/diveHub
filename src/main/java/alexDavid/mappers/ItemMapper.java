@@ -32,18 +32,18 @@ public class ItemMapper {
                 toList();
     }
 
-    public Item toModel(ItemRequestDto itemRequesDto) {
+    public Item toModel(ItemRequestDto itemRequestDto) {
         return new Item(
                 null,
-                itemRequesDto.getName(),
-                itemRequesDto.getDescription(),
-                itemRequesDto.getStarting_price(),
-                itemRequesDto.getFinal_price(),
-                itemRequesDto.getImage(),
-                itemRequesDto.getWeight(),
-                itemRequesDto.getCategory(),
-                itemRequesDto.getTag(),
-                itemRequesDto.getStock()
+                itemRequestDto.getName(),
+                itemRequestDto.getDescription(),
+                itemRequestDto.getStarting_price(),
+                itemRequestDto.getFinal_price(),
+                itemRequestDto.getImage(),
+                itemRequestDto.getWeight(),
+                itemRequestDto.getCategory(),
+                itemRequestDto.getTag(),
+                itemRequestDto.getStock()
         );
     }
 }

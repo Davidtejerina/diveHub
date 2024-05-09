@@ -1,7 +1,7 @@
 package alexDavid.controller;
 
-import alexDavid.dtos.OrderDto.OrderRequestDto;
-import alexDavid.dtos.OrderDto.OrderResponseDto;
+import alexDavid.dtos.OrderDTO.OrderRequestDto;
+import alexDavid.dtos.OrderDTO.OrderResponseDto;
 import alexDavid.mappers.OrderMapper;
 import alexDavid.models.Order;
 import alexDavid.service.OrderService.OrderService;

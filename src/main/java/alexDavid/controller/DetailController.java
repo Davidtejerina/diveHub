@@ -1,7 +1,7 @@
 package alexDavid.controller;
 
-import alexDavid.dtos.DetailDto.DetailRequestDto;
-import alexDavid.dtos.DetailDto.DetailResponseDto;
+import alexDavid.dtos.DetailDTO.DetailRequestDto;
+import alexDavid.dtos.DetailDTO.DetailResponseDto;
 import alexDavid.mappers.DetailMapper;
 import alexDavid.models.Detail;
 import alexDavid.service.DetailService.DetailService;
@@ -21,7 +21,7 @@ public class DetailController {
     private final DetailMapper detailMapper;
 
 
-    @GetMapping("/{email}")
+    @GetMapping("/all/{email}")
     public ResponseEntity<List<Detail>> getDetailsByUser(
             @PathVariable String email
     ){
@@ -29,13 +29,19 @@ public class DetailController {
     }
 
 
+    @GetMapping("/details/{order_id}")
+    public ResponseEntity<List<Detail>> getDetailsByOrder(
+            @PathVariable Long order_id
+    ){
+        return ResponseEntity.ok(detailService.findByOrder(order_id));
+    }
+
+
     @PostMapping("/addDetail")
     public ResponseEntity<DetailResponseDto> postDetails(
             @RequestBody DetailRequestDto detailRequestDto
     ){
-        Detail detail = detailService.addDetail(detailMapper.toModel(detailRequestDto));
-        DetailResponseDto detailResponseDto = detailMapper.toResponse(detail);
-        return ResponseEntity.ok(detailResponseDto);
+        return ResponseEntity.ok(detailMapper.toResponse(detailService.addDetail(detailMapper.toModel(detailRequestDto))));
     }
 
 

@@ -1,9 +1,10 @@
 package alexDavid.controller;
 
-import alexDavid.dtos.ProductDto.ProductResponseDto;
+import alexDavid.dtos.ProductDTO.ProductResponseDto;
 import alexDavid.mappers.ProductMapper;
 import alexDavid.service.ProductService.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,6 +45,13 @@ public class ProductController {
             @PathVariable Integer category
     ) {
         return ResponseEntity.ok(productMapper.toResponse(productService.findByCategory(category)));
+    }
+
+    @GetMapping("/isItem/{product_id}")
+    public ResponseEntity<Boolean> getIsItem(
+            @PathVariable Long product_id
+    ) {
+        return ResponseEntity.ok(productService.getIsItem(product_id));
     }
 
     @GetMapping("/getProductByName/{name}")

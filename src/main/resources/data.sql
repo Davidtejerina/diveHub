@@ -110,10 +110,74 @@ VALUES
 INSERT INTO Cart (user_id, product_id, quantity)
 VALUES
     (1, 1, 1),
-    (1, 3, 3),
-    (1, 4, 2),
+    (1, 3, 1),
+    (1, 4, 1),
     (1, 5, 1),
     (1, 6, 1),
-    (1, 7, 3),
-    (2, 2, 7),
+    (1, 7, 1),
+    (2, 2, 5),
     (2, 1, 1);
+
+
+
+INSERT INTO my_order (user_id, total, address, date)
+VALUES
+    (1, 1000, 'Getafe', NOW()),
+    (1, 300, 'Getafe', NOW()),
+    (1, 400, 'Getafe', NOW()),
+    (1, 500, 'Getafe', NOW()),
+    (1, 600, 'Getafe', NOW()),
+    (1, 700, 'Getafe', NOW()),
+    (5, 200, 'Getafe', NOW()),
+    (5, 100, 'Getafe', NOW());
+
+
+
+INSERT INTO line_order (order_id, product_id, quantity)
+VALUES
+    (1, 1, 1),
+    (1, 3, 1),
+    (1, 4, 1),
+    (1, 5, 3),
+    (1, 6, 1),
+    (1, 7, 1),
+    (5, 2, 3),
+    (5, 1, 1);
+
+
+
+INSERT INTO Assessment (user_id, content, stars, date, product_id)
+VALUES
+    (1, 'Una experiencia de buceo realmente emocionante, lo recomiendo altamente', 5, NOW(), 1),
+    (1, 'Una experiencia de buceo realmente emocionante 2, lo recomiendo altamente', 2, NOW(), 1),
+    (1, 'Una experiencia de buceo realmente emocionante 3, lo recomiendo altamente', 0, NOW(), 1),
+    (1, 'Me encanta este kit de snorkel, es perfecto para explorar los arrecifes', 4, NOW(), 2),
+    (1, 'El curso de buceo avanzado me ayudó a mejorar mis habilidades, excelente instructor', 4.5, NOW(), 3),
+    (1, 'La excursión a la barrera de coral fue increíble, vi muchas especies marinas', 5, NOW(), 4),
+    (1, 'Este traje de neopreno es cómodo y mantiene el calor, ideal para aguas frías', 4.5, NOW(), 5),
+    (1, 'El curso de buceo básico fue una gran introducción al mundo del buceo, muy recomendado', 4, NOW(), 6),
+    (1, 'El paquete de fotografía submarina tiene todo lo que necesito para capturar imágenes increíbles', 4.5, NOW(), 7),
+    (1, 'Los accesorios de buceo son de alta calidad y útiles, definitivamente los volvería a comprar', 4, NOW(), 8),
+    (1, 'El tour nocturno de buceo fue una experiencia única, la vida marina nocturna es fascinante', 5, NOW(), 9),
+    (1, 'Las botellas de oxígeno son imprescindibles para bucear de forma segura, muy satisfecho con la compra', 4.5, NOW(), 10),
+    (1, 'El curso de rescate acuático me proporcionó habilidades importantes para situaciones de emergencia', 4, NOW(), 11),
+    (1, 'El viaje a islas tropicales fue el mejor viaje de mi vida, increíbles paisajes y buceo', 5, NOW(), 12),
+    (1, 'El curso de fotografía submarina me enseñó técnicas valiosas para capturar fotos submarinas', 4.5, NOW(), 13),
+    (1, 'Los guantes de buceo son resistentes y cómodos, perfectos para proteger las manos', 4, NOW(), 14),
+    (1, 'La expedición a naufragios fue una experiencia emocionante, exploré lugares increíbles', 5, NOW(), 15),
+    (1, 'El kit de reparación de equipos de buceo es muy útil para realizar reparaciones rápidas', 4.5, NOW(), 16),
+    (1, 'El bautismo de buceo fue una introducción fantástica al buceo, definitivamente continuaré', 4, NOW(), 17),
+    (1, 'La linterna submarina ilumina perfectamente en la oscuridad, gran herramienta para bucear', 5, NOW(), 18),
+    (1, 'El curso de biología marina fue informativo y emocionante, aprendí mucho sobre la vida marina', 4.5, NOW(), 19),
+    (1, 'La excursión a arrecifes de coral fue una aventura increíble, vi mucha vida marina', 4, NOW(), 20),
+    (1, 'El tanque de buceo de aluminio es ligero y duradero, perfecto para inmersiones largas', 5, NOW(), 21),
+    (1, 'El tour de snorkel guiado fue muy divertido y pude ver muchos peces coloridos', 4.5, NOW(), 22),
+    (1, 'La máscara de buceo panorámica proporciona una visión clara bajo el agua, la recomiendo', 4, NOW(), 23),
+    (1, 'El cuchillo de buceo es resistente y afilado, útil para tareas submarinas', 5, NOW(), 24),
+    (1, 'La tabla de mareas es útil para planificar las inmersiones, la llevo siempre conmigo', 4.5, NOW(), 25),
+    (1, 'El curso de navegación marina fue completo y me enseñó habilidades valiosas', 4, NOW(), 26),
+    (1, 'El viaje de buceo en cuevas fue una experiencia única, exploré cuevas asombrosas', 5, NOW(), 27),
+    (1, 'El regulador de buceo funciona perfectamente, respiración suave y segura bajo el agua', 4.5, NOW(), 28),
+    (1, 'El safari de buceo fue una aventura emocionante, vi muchas especies marinas', 4, NOW(), 29);
+
+

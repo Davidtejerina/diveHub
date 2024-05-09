@@ -1,10 +1,7 @@
-package alexDavid.dtos.ProductDto;
+package alexDavid.dtos.ProductDTO;
 
 import alexDavid.models.Category;
-import alexDavid.models.Level;
 import lombok.Data;
-
-import java.time.LocalDateTime;
 
 @Data
 public class ProductResponseDto {

@@ -1,8 +1,7 @@
-package alexDavid.dtos.WishListDto;
+package alexDavid.dtos.WishListDTO;
 
 import alexDavid.models.Activity;
 import alexDavid.models.Item;
-import alexDavid.models.Product;
 import alexDavid.models.User.User;
 import lombok.Data;
 

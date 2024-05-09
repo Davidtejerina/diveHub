@@ -1,8 +1,8 @@
 package alexDavid.controller;
 
 import alexDavid.Contact.MessageService;
-import alexDavid.dtos.UserDto.UserRequestDto;
-import alexDavid.dtos.UserDto.UserResponseDto;
+import alexDavid.dtos.UserDTO.UserRequestDto;
+import alexDavid.dtos.UserDTO.UserResponseDto;
 import alexDavid.mappers.UserMapper;
 import alexDavid.service.CartService.CartService;
 import alexDavid.service.DetailService.DetailService;
@@ -10,7 +10,6 @@ import alexDavid.service.OrderService.OrderService;
 import alexDavid.service.UserDetailsServiceImpl;
 import alexDavid.service.WishListService.WishListService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

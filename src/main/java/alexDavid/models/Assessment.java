@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @Entity
 @NoArgsConstructor
@@ -20,5 +22,7 @@ public class Assessment {
     private User user;
 
     private String content;
+    private Integer stars;
+    private LocalDateTime date;
     private Long productId;
 }
