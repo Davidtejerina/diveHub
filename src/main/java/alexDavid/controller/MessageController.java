@@ -1,5 +1,7 @@
-package alexDavid.Contact;
+package alexDavid.controller;
 
+import alexDavid.service.MessageService.MessageService;
+import alexDavid.models.Message;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
