@@ -72,4 +72,6 @@ public class ActivityController {
     ){
         return ResponseEntity.ok(activityService.getRemainingTime(id)); //en horas
     }
+
+    //TODO crear getMapping para ver si el usuario tiene el nivel requerido
 }
