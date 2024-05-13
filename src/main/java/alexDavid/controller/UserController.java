@@ -1,6 +1,6 @@
 package alexDavid.controller;
 
-import alexDavid.Contact.MessageService;
+import alexDavid.service.MessageService.MessageService;
 import alexDavid.dtos.UserDTO.UserRequestDto;
 import alexDavid.dtos.UserDTO.UserResponseDto;
 import alexDavid.mappers.UserMapper;

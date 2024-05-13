@@ -1,4 +1,4 @@
-package alexDavid.Contact;
+package alexDavid.models;
 
 import alexDavid.models.User.User;
 import jakarta.persistence.*;

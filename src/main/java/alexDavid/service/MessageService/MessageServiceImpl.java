@@ -1,5 +1,7 @@
-package alexDavid.Contact;
+package alexDavid.service.MessageService;
 
+import alexDavid.models.Message;
+import alexDavid.repository.MessageRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

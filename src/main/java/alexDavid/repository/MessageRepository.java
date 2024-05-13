@@ -1,5 +1,6 @@
-package alexDavid.Contact;
+package alexDavid.repository;
 
+import alexDavid.models.Message;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
