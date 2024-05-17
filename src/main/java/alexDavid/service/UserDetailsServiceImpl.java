@@ -97,4 +97,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         User user = this.loadUserByUserEmail(email);
         userDetailsRepository.delete(user);
     }
+
+    public Boolean existsNickname(String nickname) {
+        return userDetailsRepository.existsByNickname(nickname);
+    }
 }

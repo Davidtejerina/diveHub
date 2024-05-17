@@ -53,6 +53,14 @@ public class UserController {
     }
 
 
+    @GetMapping("/existsNickname/{nickname}")
+    public ResponseEntity<Boolean> getUserExistsNickname(
+            @PathVariable String nickname
+    ) {
+        return ResponseEntity.ok(userService.existsNickname(nickname));
+    }
+
+
     @PutMapping("/{email}")
     public ResponseEntity<UserResponseDto> updateUser(
             @PathVariable String email,

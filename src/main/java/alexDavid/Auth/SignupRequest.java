@@ -1,5 +1,6 @@
 package alexDavid.Auth;
 
+import alexDavid.models.Level;
 import lombok.Data;
 import java.time.LocalDateTime;
 
@@ -13,5 +14,6 @@ public class SignupRequest {
     private Integer phone;
     private LocalDateTime birthday;
     private String address;
+    private Level level;
 }
 
