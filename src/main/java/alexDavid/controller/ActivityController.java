@@ -4,11 +4,13 @@ import alexDavid.dtos.ActivityDTO.ActivityResponseDto;
 import alexDavid.mappers.ActivityMapper;
 import alexDavid.service.ActivityService.ActivityService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -71,6 +73,39 @@ public class ActivityController {
             @PathVariable Long id
     ){
         return ResponseEntity.ok(activityService.getRemainingTime(id)); //en horas
+    }
+
+    @GetMapping("/updateTimeEnds/{id}/{date}")
+    public ResponseEntity<ActivityResponseDto> updateEndTimeByActivityId(
+            @PathVariable Long id,
+            @PathVariable String date
+    ){
+        return ResponseEntity.ok(activityMapper.toResponse(activityService.updateEndTime(id, date)));
+    }
+
+    @GetMapping("/updateTimeStarts/{id}/{date}")
+    public ResponseEntity<ActivityResponseDto> updateStartTimeByActivityId(
+            @PathVariable Long id,
+            @PathVariable String date
+    ){
+        System.out.println(date);
+        return ResponseEntity.ok(activityMapper.toResponse(activityService.updateStartTime(id, date)));
+    }
+
+    @GetMapping("/updateAvailable_spaces/{id}")
+    public ResponseEntity<?> updateAvailable_spaces(
+            @PathVariable Long id
+    ){
+        activityService.updateAvailable_spaces(id);
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+
+    @GetMapping("/isActivityAvailableForUser/{id}/{email}")
+    public ResponseEntity<Boolean> isActivityAvailableForUser(
+            @PathVariable Long id,
+            @PathVariable String email
+    ){
+        return ResponseEntity.ok(activityService.isActivityAvailableForUser(id, email));
     }
 
     //TODO crear getMapping para ver si el usuario tiene el nivel requerido

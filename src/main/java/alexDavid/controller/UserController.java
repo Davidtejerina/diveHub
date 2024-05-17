@@ -1,5 +1,6 @@
 package alexDavid.controller;
 
+import alexDavid.service.AssessmentService.AssessmentService;
 import alexDavid.service.MessageService.MessageService;
 import alexDavid.dtos.UserDTO.UserRequestDto;
 import alexDavid.dtos.UserDTO.UserResponseDto;
@@ -23,7 +24,6 @@ import java.util.List;
 public class UserController {
     private final UserDetailsServiceImpl userService;
     private final WishListService wishListService;
-    private final MessageService messageService;
     private final CartService cartService;
     private final DetailService detailService;
     private final UserMapper userMapper;
@@ -66,10 +66,9 @@ public class UserController {
     public ResponseEntity<?> deleteUser(
             @PathVariable String email
     ) {
-        cartService.cleanCart(email);
         detailService.deleteByUser(email);
         orderService.deleteByUser(email);
-        messageService.deleteAllMessages(email);
+        cartService.cleanCart(email);
         wishListService.cleanWishList(email);
         userService.deleteUser(email);
         return new ResponseEntity<>(HttpStatus.OK);
