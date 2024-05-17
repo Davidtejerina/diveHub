@@ -1,7 +1,9 @@
 package alexDavid.service.ActivityService;
 
+import alexDavid.dtos.ActivityDTO.ActivityResponseDto;
 import alexDavid.models.Activity;
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface ActivityService {
@@ -13,4 +15,8 @@ public interface ActivityService {
     List<Activity> findByAvailable();
     Duration getRemainingTime(Long id);
     List<Activity> findByName(String name);
+    Activity updateEndTime(Long id, String date);
+    Activity updateStartTime(Long id, String date);
+    void updateAvailable_spaces(Long id);
+    Boolean isActivityAvailableForUser(Long id, String email);
 }
