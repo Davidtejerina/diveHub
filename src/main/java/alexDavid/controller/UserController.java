@@ -1,5 +1,6 @@
 package alexDavid.controller;
 
+import alexDavid.models.User.User;
 import alexDavid.service.AssessmentService.AssessmentService;
 import alexDavid.service.MessageService.MessageService;
 import alexDavid.dtos.UserDTO.UserRequestDto;
@@ -41,7 +42,7 @@ public class UserController {
     public ResponseEntity<UserResponseDto> getUser(
             @PathVariable String email
     ) {
-        return ResponseEntity.ok(userMapper.toResponse(userService.loadUserByUserEmail(email)));
+        return ResponseEntity.ok(userMapper.toResponse((User) userService.loadUserByUsername(email)));
     }
 
 
@@ -58,6 +59,14 @@ public class UserController {
             @PathVariable String nickname
     ) {
         return ResponseEntity.ok(userService.existsNickname(nickname));
+    }
+
+
+    @GetMapping("/existsEmail/{email}")
+    public ResponseEntity<Boolean> getUserExistsEmail(
+            @PathVariable String email
+    ) {
+        return ResponseEntity.ok(userService.existsEmail(email));
     }
 
 

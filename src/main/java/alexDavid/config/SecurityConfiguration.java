@@ -49,6 +49,8 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers(mvc.pattern("/divehub/auth/login")).permitAll()
                         .requestMatchers(mvc.pattern("/divehub/auth/signup")).permitAll()
+                        .requestMatchers(mvc.pattern("/divehub/users/existsNickname/{nickname}")).permitAll()
+                        .requestMatchers(mvc.pattern("/divehub/users/existsEmail/{email}")).permitAll()
                         .requestMatchers(mvc.pattern("/divehub/messages/addMessage")).permitAll()
                         .requestMatchers(mvc.pattern("/divehub/products/all")).permitAll()
                         .requestMatchers(mvc.pattern("/divehub/products/getProductById/{id}")).permitAll()

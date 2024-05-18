@@ -32,10 +32,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return userDetailsRepository.findAll();
     }
 
-    public User loadUserByUserEmail(String email){
-        return userDetailsRepository.findByEmail(email);
-    }
-
     public User save(User user) {
         return userDetailsRepository.save(user);
     }
@@ -52,7 +48,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return userUpdated;
     }
 
-
     public User create(SignupRequest signupRequest){
         User user = new User(
                 null,
@@ -64,7 +59,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 signupRequest.getPhone(),
                 signupRequest.getBirthday(),
                 signupRequest.getAddress(),
-                null,
+                signupRequest.getLevel(),
                 LocalDateTime.now(),
                 LocalDateTime.now(),
                 Role.USER
@@ -72,33 +67,31 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return this.save(user);
     }
 
-
     public void updateLogin(String email) {
         User user = userDetailsRepository.findByEmail(email);
         user.setLast_login(LocalDateTime.now());
         this.save(user);
     }
 
-
     public boolean existUser(String email){
         return userDetailsRepository.existsByEmail(email);
     }
 
-    public boolean existNickname(String nickname){
-        return userDetailsRepository.existsByNickname(nickname);
-    }
-
     public boolean isAdmin(String email) {
-        User user = this.loadUserByUserEmail(email);
+        User user = (User) this.loadUserByUsername(email);
         return user != null && user.getRole() == Role.ADMIN;
     }
 
     public void deleteUser(String email){
-        User user = this.loadUserByUserEmail(email);
+        User user = (User) this.loadUserByUsername(email);
         userDetailsRepository.delete(user);
     }
 
     public Boolean existsNickname(String nickname) {
         return userDetailsRepository.existsByNickname(nickname);
+    }
+
+    public Boolean existsEmail(String email) {
+        return userDetailsRepository.existsByEmail(email);
     }
 }
