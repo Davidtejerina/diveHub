@@ -1,10 +1,9 @@
 package alexDavid.service.ActivityService;
 
-import alexDavid.dtos.ActivityDTO.ActivityResponseDto;
 import alexDavid.models.Activity;
 import java.time.Duration;
-import java.time.LocalDateTime;
 import java.util.List;
+
 
 public interface ActivityService {
     List<Activity> findAll();

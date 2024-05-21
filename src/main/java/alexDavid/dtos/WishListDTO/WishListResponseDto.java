@@ -5,6 +5,7 @@ import alexDavid.models.Item;
 import alexDavid.models.User.User;
 import lombok.Data;
 
+
 @Data
 public class WishListResponseDto {
     private final Long id;

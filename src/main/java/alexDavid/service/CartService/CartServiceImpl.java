@@ -1,17 +1,13 @@
 package alexDavid.service.CartService;
 
 import alexDavid.models.Cart;
-import alexDavid.models.Product;
-import alexDavid.models.WishList;
 import alexDavid.repository.CartRepository;
 import alexDavid.repository.ProductRepository;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
+
 
 @Service
 @Transactional
@@ -19,7 +15,6 @@ import java.util.List;
 public class CartServiceImpl implements CartService {
     private final CartRepository cartRepository;
     private final ProductRepository productRepository;
-
 
     @Override
     public List<Cart> getListByUser(String email){
@@ -45,7 +40,7 @@ public class CartServiceImpl implements CartService {
     public double getTotalPriceByEmail(String email) {
         List<Cart> cartItems = getListByUser(email);
         return cartItems.stream()
-                .mapToDouble(cart -> productRepository.findById(cart.getProductId()).get().getFinal_price() * cart.getQuantity())
+                .mapToDouble(cart -> productRepository.findById(cart.getProductId()).orElseThrow().getFinal_price() * cart.getQuantity())
                 .sum();
     }
 

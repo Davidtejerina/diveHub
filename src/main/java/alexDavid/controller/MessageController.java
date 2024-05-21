@@ -22,7 +22,6 @@ public class MessageController {
         return ResponseEntity.ok(messageService.findByUser(email));
     }
 
-
     @PostMapping("/addMessage")
     public ResponseEntity<Message> postMessage(
             @RequestBody Message message

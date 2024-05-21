@@ -17,7 +17,6 @@ public class Activity extends Product {
     private Integer available_spaces;
     private Boolean available;
 
-    // Constructors
     public Activity(Long id, String name, String description, Double starting_price, Double final_price,
                     String image, Category category, Level level_required, LocalDateTime start,
                     LocalDateTime end, Integer available_spaces, Boolean available, String tag) {

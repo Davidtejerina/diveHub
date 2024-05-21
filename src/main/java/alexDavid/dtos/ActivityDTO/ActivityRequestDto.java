@@ -3,8 +3,8 @@ package alexDavid.dtos.ActivityDTO;
 import alexDavid.models.Category;
 import alexDavid.models.Level;
 import lombok.Data;
-
 import java.time.LocalDateTime;
+
 
 @Data
 public class ActivityRequestDto {

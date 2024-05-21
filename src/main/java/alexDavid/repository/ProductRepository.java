@@ -1,10 +1,8 @@
 package alexDavid.repository;
 
 import alexDavid.models.Category;
-import alexDavid.models.Item;
 import alexDavid.models.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 

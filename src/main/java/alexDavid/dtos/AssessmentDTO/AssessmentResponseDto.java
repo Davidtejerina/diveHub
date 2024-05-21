@@ -2,8 +2,8 @@ package alexDavid.dtos.AssessmentDTO;
 
 import alexDavid.models.User.User;
 import lombok.Data;
-
 import java.time.LocalDateTime;
+
 
 @Data
 public class AssessmentResponseDto {

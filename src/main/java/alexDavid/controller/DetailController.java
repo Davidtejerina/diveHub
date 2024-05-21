@@ -20,14 +20,12 @@ public class DetailController {
     private final DetailService detailService;
     private final DetailMapper detailMapper;
 
-
     @GetMapping("/all/{email}")
     public ResponseEntity<List<Detail>> getDetailsByUser(
             @PathVariable String email
     ){
         return ResponseEntity.ok(detailService.findByUser(email));
     }
-
 
     @GetMapping("/details/{order_id}")
     public ResponseEntity<List<Detail>> getDetailsByOrder(
@@ -36,14 +34,12 @@ public class DetailController {
         return ResponseEntity.ok(detailService.findByOrder(order_id));
     }
 
-
     @PostMapping("/addDetail")
     public ResponseEntity<DetailResponseDto> postDetails(
             @RequestBody DetailRequestDto detailRequestDto
     ){
         return ResponseEntity.ok(detailMapper.toResponse(detailService.addDetail(detailMapper.toModel(detailRequestDto))));
     }
-
 
     @DeleteMapping("/clean/{email}")
     public ResponseEntity<?> removeDetails(

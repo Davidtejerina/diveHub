@@ -6,7 +6,6 @@ import alexDavid.Auth.SignupRequest;
 import alexDavid.models.User.User;
 import alexDavid.service.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -23,7 +22,6 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final UserDetailsServiceImpl userDetailsService;
 
-
     @PostMapping("/login")
     public ResponseEntity<?> login(
             @RequestBody LoginRequest loginRequest
@@ -35,7 +33,6 @@ public class AuthController {
         userDetailsService.updateLogin(loginRequest.getEmail());
         return ResponseEntity.ok(Map.of("token", jwtService.createToken(loginRequest.getEmail())));
     }
-
 
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody SignupRequest signupRequest) {

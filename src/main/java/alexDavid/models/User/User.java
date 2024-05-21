@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -35,7 +36,6 @@ public class User implements UserDetails {
     private LocalDateTime registration_date;
     private LocalDateTime last_login;
     private Role role;
-
 
     public User(String email, String password) {
         this.password = password;

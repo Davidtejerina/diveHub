@@ -3,6 +3,7 @@ package alexDavid.dtos.ProductDTO;
 import alexDavid.models.Category;
 import lombok.Data;
 
+
 @Data
 public class ProductResponseDto {
     private final Long id;

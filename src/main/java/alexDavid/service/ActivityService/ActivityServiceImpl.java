@@ -1,23 +1,18 @@
 package alexDavid.service.ActivityService;
 
-import alexDavid.dtos.ActivityDTO.ActivityResponseDto;
 import alexDavid.models.Activity;
 import alexDavid.models.Category;
 import alexDavid.models.Detail;
-import alexDavid.models.Order;
-import alexDavid.models.User.User;
 import alexDavid.repository.ActivityRepository;
 import alexDavid.repository.DetailRepository;
-import alexDavid.repository.OrderRepository;
 import alexDavid.repository.UserDetailsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+
 
 @Service
 @RequiredArgsConstructor

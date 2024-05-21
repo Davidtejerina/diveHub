@@ -6,9 +6,9 @@ import alexDavid.models.Assessment;
 import org.springframework.stereotype.Component;
 import java.util.List;
 
+
 @Component
 public class AssessmentMapper {
-
     public AssessmentResponseDto toResponse(Assessment assessment){
         return new AssessmentResponseDto(
                 assessment.getId(),
@@ -19,7 +19,6 @@ public class AssessmentMapper {
                 assessment.getProductId()
         );
     }
-
 
     public List<AssessmentResponseDto> toResponse(List<Assessment> assessments) {
         return assessments.stream().

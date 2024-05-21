@@ -47,5 +47,4 @@ public class ProductServiceImpl implements ProductService {
     public Boolean getIsItem(Long id) {
         return this.findById(id).getCategory().toString().equals("PRODUCT");
     }
-
 }

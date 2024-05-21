@@ -8,8 +8,8 @@ import alexDavid.mappers.ItemMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import alexDavid.service.ItemService.ItemService;
-
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/divehub/items")
@@ -18,7 +18,6 @@ import java.util.List;
 public class ItemController {
     private final ItemService itemService;
     private final ItemMapper itemMapper;
-
 
     @GetMapping("/all")
     public ResponseEntity<List<ItemResponseDto>> getAllItems(
@@ -67,7 +66,7 @@ public class ItemController {
             @RequestBody ItemRequestDto productRequestDto
     ) {
         Item productSaved = itemService.save(itemMapper.toModel(productRequestDto));
-        return ResponseEntity.created(null).body(itemMapper.toResponse(productSaved));
+        return ResponseEntity.ok(itemMapper.toResponse(productSaved));
     }
 
     @PutMapping("/updateItem/{id}")

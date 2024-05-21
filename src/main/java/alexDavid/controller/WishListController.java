@@ -9,8 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/divehub/wishes")
@@ -21,14 +21,12 @@ public class WishListController {
     private final WishListService wishListService;
     private final WishListMapper wishListMapper;
 
-
     @GetMapping("/{email}")
     public ResponseEntity<List<WishList>> getListByUser(
             @PathVariable String email
     ){
         return ResponseEntity.ok(wishListService.getListByUser(email));
     }
-
 
     @GetMapping("/{productId}/{email}")
     public ResponseEntity<Boolean> isProductOnWishList (
@@ -39,14 +37,12 @@ public class WishListController {
         return ResponseEntity.ok(wishListService.isProductLiked(email, null, productId));
     }
 
-
     @GetMapping("/findType/{productId}")
     public ResponseEntity<Boolean> isItemOrActivity (
             @PathVariable Long productId
     ){
         return ResponseEntity.ok(wishListService.isItem(productId));
     }
-
 
     @PostMapping("/add")
     public ResponseEntity<?> addProduct(
@@ -57,7 +53,6 @@ public class WishListController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
     @DeleteMapping("/clean/{productId}/{email}")
     public ResponseEntity<?> removeProduct (
         @PathVariable Long productId,
@@ -67,7 +62,6 @@ public class WishListController {
         else wishListService.removeActivity(productId, email);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 
     @DeleteMapping("/cleanAll/{email}")
     public ResponseEntity<?> removeAllProducts(

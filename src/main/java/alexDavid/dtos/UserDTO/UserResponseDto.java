@@ -3,8 +3,9 @@ package alexDavid.dtos.UserDTO;
 import alexDavid.models.Level;
 import alexDavid.models.User.Role;
 import lombok.Data;
-
 import java.time.LocalDateTime;
+
+
 @Data
 public class UserResponseDto {
     private final Long id;

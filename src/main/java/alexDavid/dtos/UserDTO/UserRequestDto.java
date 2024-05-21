@@ -2,8 +2,9 @@ package alexDavid.dtos.UserDTO;
 
 import alexDavid.models.Level;
 import lombok.Data;
-
 import java.time.LocalDateTime;
+
+
 @Data
 public class UserRequestDto {
     private final String nickname;

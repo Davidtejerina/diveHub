@@ -9,7 +9,6 @@ import java.util.List;
 
 @Component
 public class ItemMapper {
-
     public ItemResponseDto toResponse(Item item) {
         return new ItemResponseDto(
                 item.getId(),
@@ -24,7 +23,6 @@ public class ItemMapper {
                 item.getStock()
         );
     }
-
 
     public List<ItemResponseDto> toResponse(List<Item> items) {
         return items.stream().

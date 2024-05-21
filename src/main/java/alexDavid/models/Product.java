@@ -1,6 +1,5 @@
 package alexDavid.models;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 

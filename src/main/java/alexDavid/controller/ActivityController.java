@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 import java.time.Duration;
-import java.time.LocalDateTime;
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/divehub/activities")
@@ -108,7 +108,6 @@ public class ActivityController {
         return ResponseEntity.ok(activityService.isActivityAvailableForUser(id, email));
     }
 
-    //TODO crear getMapping para ver si el usuario tiene el nivel requerido
     @GetMapping("/isAvailableByLevel/{id}/{email}")
     public ResponseEntity<Boolean>isAvailableByLevel(
             @PathVariable Long id,
@@ -116,5 +115,4 @@ public class ActivityController {
     ){
         return ResponseEntity.ok(activityService.IsAvailableByLevel(id, email));
     }
-
 }

@@ -1,8 +1,6 @@
 package alexDavid.controller;
 
 import alexDavid.models.User.User;
-import alexDavid.service.AssessmentService.AssessmentService;
-import alexDavid.service.MessageService.MessageService;
 import alexDavid.dtos.UserDTO.UserRequestDto;
 import alexDavid.dtos.UserDTO.UserResponseDto;
 import alexDavid.mappers.UserMapper;
@@ -15,8 +13,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/divehub/users")
@@ -30,13 +28,11 @@ public class UserController {
     private final UserMapper userMapper;
     private final OrderService orderService;
 
-
     @GetMapping
     public ResponseEntity<List<UserResponseDto>> getAllUser(
     ) {
         return ResponseEntity.ok(userMapper.toResponse(userService.getAllUsers()));
     }
-
 
     @GetMapping("/{email}")
     public ResponseEntity<UserResponseDto> getUser(
@@ -45,14 +41,12 @@ public class UserController {
         return ResponseEntity.ok(userMapper.toResponse((User) userService.loadUserByUsername(email)));
     }
 
-
     @GetMapping("/isAdmin/{email}")
     public ResponseEntity<Boolean> getUserIsAdmin(
             @PathVariable String email
     ) {
         return ResponseEntity.ok(userService.isAdmin(email));
     }
-
 
     @GetMapping("/existsNickname/{nickname}")
     public ResponseEntity<Boolean> getUserExistsNickname(
@@ -61,14 +55,12 @@ public class UserController {
         return ResponseEntity.ok(userService.existsNickname(nickname));
     }
 
-
     @GetMapping("/existsEmail/{email}")
     public ResponseEntity<Boolean> getUserExistsEmail(
             @PathVariable String email
     ) {
         return ResponseEntity.ok(userService.existsEmail(email));
     }
-
 
     @PutMapping("/{email}")
     public ResponseEntity<UserResponseDto> updateUser(
@@ -77,7 +69,6 @@ public class UserController {
     ) {
         return ResponseEntity.ok(userMapper.toResponse(userService.updateUser(email, userMapper.toModel(user))));
     }
-
 
     @DeleteMapping("/{email}")
     public ResponseEntity<?> deleteUser(

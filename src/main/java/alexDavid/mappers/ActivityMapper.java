@@ -3,12 +3,11 @@ package alexDavid.mappers;
 import alexDavid.dtos.ActivityDTO.ActivityResponseDto;
 import alexDavid.models.Activity;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
+
 
 @Component
 public class ActivityMapper {
-
     public ActivityResponseDto toResponse(Activity activity){
         return new ActivityResponseDto(
                 activity.getId(),
@@ -26,6 +25,7 @@ public class ActivityMapper {
                 activity.getAvailable()
         );
     }
+
     public List<ActivityResponseDto> toResponse(List<Activity> activities) {
         return activities.stream().
                 map(this::toResponse).

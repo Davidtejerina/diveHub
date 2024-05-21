@@ -5,6 +5,7 @@ import alexDavid.models.Product;
 import org.springframework.stereotype.Component;
 import java.util.List;
 
+
 @Component
 public class ProductMapper {
     public ProductResponseDto toResponse(Product product){
@@ -19,6 +20,7 @@ public class ProductMapper {
                 product.getTag()
         );
     }
+
     public List<ProductResponseDto> toResponse(List<Product> products) {
         return products.stream().
                 map(this::toResponse).

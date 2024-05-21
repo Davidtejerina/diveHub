@@ -5,11 +5,11 @@ import alexDavid.mappers.CartMapper;
 import alexDavid.models.Cart;
 import alexDavid.service.CartService.CartService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/divehub/carts")
@@ -33,7 +33,6 @@ public class CartController {
         return ResponseEntity.ok(cartService.getCountByClient(email));
     }
 
-
     @GetMapping("/totalPrice/{email}")
     public ResponseEntity<Double> getTotalPrice(
             @PathVariable String email
@@ -41,7 +40,6 @@ public class CartController {
         double totalPrice = cartService.getTotalPriceByEmail(email);
         return new ResponseEntity<>(totalPrice, HttpStatus.OK);
     }
-
 
     @GetMapping("/updateQuantity/{product_id}/{quantity}/{user_email}")
     public ResponseEntity<?> updateProductQuantity(
@@ -53,7 +51,6 @@ public class CartController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
     @GetMapping("/exists/{product_id}/{user_email}")
     public ResponseEntity<Boolean> existsProduct(
             @PathVariable String user_email,
@@ -61,7 +58,6 @@ public class CartController {
     ){
         return new ResponseEntity<>(cartService.isProductInCart(user_email, product_id), HttpStatus.OK);
     }
-
 
     @PostMapping
     public ResponseEntity<?> addProduct(
@@ -74,7 +70,6 @@ public class CartController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
     @DeleteMapping("/clean/{productId}/{email}")
     public ResponseEntity<?> removeProduct(
             @PathVariable Long productId,
@@ -83,7 +78,6 @@ public class CartController {
         cartService.removeProduct(email, productId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 
     @DeleteMapping("/cleanAll/{email}")
     public ResponseEntity<?> removeAllProducts(

@@ -5,6 +5,7 @@ import alexDavid.models.Level;
 import lombok.Data;
 import java.time.LocalDateTime;
 
+
 @Data
 public class ActivityResponseDto {
     private final Long id;

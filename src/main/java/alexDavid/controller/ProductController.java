@@ -4,7 +4,6 @@ import alexDavid.dtos.ProductDTO.ProductResponseDto;
 import alexDavid.mappers.ProductMapper;
 import alexDavid.service.ProductService.ProductService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
