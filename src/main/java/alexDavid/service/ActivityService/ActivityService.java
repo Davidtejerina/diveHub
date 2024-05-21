@@ -19,4 +19,5 @@ public interface ActivityService {
     Activity updateStartTime(Long id, String date);
     void updateAvailable_spaces(Long id);
     Boolean isActivityAvailableForUser(Long id, String email);
+    Boolean IsAvailableByLevel(Long id, String email);
 }

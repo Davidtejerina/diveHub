@@ -96,6 +96,11 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
+    public Boolean IsAvailableByLevel(Long activityId, String email) {
+        return (userDetailsRepository.findByEmail(email).getLevel()).compareTo(activityRepository.findById(activityId).orElseThrow().getLevel_required()) >= 0;
+    }
+
+    @Override
     public Activity save(Activity activity) {
        return activityRepository.save(activity);
     }

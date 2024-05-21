@@ -109,4 +109,12 @@ public class ActivityController {
     }
 
     //TODO crear getMapping para ver si el usuario tiene el nivel requerido
+    @GetMapping("/isAvailableByLevel/{id}/{email}")
+    public ResponseEntity<Boolean>isAvailableByLevel(
+            @PathVariable Long id,
+            @PathVariable String email
+    ){
+        return ResponseEntity.ok(activityService.IsAvailableByLevel(id, email));
+    }
+
 }
