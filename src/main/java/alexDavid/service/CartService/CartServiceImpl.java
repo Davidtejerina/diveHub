@@ -40,7 +40,7 @@ public class CartServiceImpl implements CartService {
     public double getTotalPriceByEmail(String email) {
         List<Cart> cartItems = getListByUser(email);
         return cartItems.stream()
-                .mapToDouble(cart -> productRepository.findById(cart.getProductId()).orElseThrow().getFinal_price() * cart.getQuantity())
+                .mapToDouble(cart -> productRepository.findById(cart.getProductId()).orElseThrow().getStarting_price() * cart.getQuantity())
                 .sum();
     }
 
