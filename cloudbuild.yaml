@@ -1,16 +1,16 @@
 steps:
   # Step 0 - Build the docker image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'europe-west1-docker.pkg.dev/just-amp-373710/divehub-springboot/despliegueapi:v1', '.']
+    args: ['build', '-t', 'europe-west1-docker.pkg.dev/linear-encoder-424111-i7/divehub-springboot/despliegueapi:v1', '.']
 
   # Step 1 - Run unit tests inside the docker container
-  - name: 'europe-west1-docker.pkg.dev/just-amp-373710/divehub-springboot/despliegueapi:v1'
+  - name: 'europe-west1-docker.pkg.dev/linear-encoder-424111-i7/divehub-springboot/despliegueapi:v1'
     entrypoint: java
     args: ["-jar", "diveHub-0.0.1-SNAPSHOT.jar app.jar"]
 
   # Step 2 - Push the docker image to an Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'europe-west1-docker.pkg.dev/just-amp-373710/divehub-springboot/despliegueapi:v1']
+    args: ['push', 'europe-west1-docker.pkg.dev/linear-encoder-424111-i7/divehub-springboot/despliegueapi:v1']
 
   # Step 3 - Deploy the image in a Cloud Run service
   - name: 'gcr.io/cloud-builders/gcloud'
@@ -19,7 +19,7 @@ steps:
       - 'deploy'
       - 'cloudrunservice'
       - '--image'
-      - 'europe-west1-docker.pkg.dev/just-amp-373710/divehub-springboot/despliegueapi:v1'
+      - 'europe-west1-docker.pkg.dev/linear-encoder-424111-i7/divehub-springboot/despliegueapi:v1'
       - '--region'
       - 'europe-west1'
       - '--platform'
