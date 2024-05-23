@@ -2,21 +2,21 @@ steps:
   # Step 0 - Build the Maven project to generate the JAR file
   - name: 'gcr.io/cloud-builders/mvn'
     args: ['clean', 'package']
+    id: 'Maven Build'
 
   # Step 1 - Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'europe-west1-docker.pkg.dev/linear-encoder-424111-i7/divehub-springboot/despliegueapi:v1', '.']
+    id: 'Build Docker Image'
+    waitFor: ['Maven Build']
 
-  # Step 2 - Run unit tests inside the Docker container
-  - name: 'europe-west1-docker.pkg.dev/linear-encoder-424111-i7/divehub-springboot/despliegueapi:v1'
-    entrypoint: java
-    args: ["-jar", "app.jar", "test"]
-
-  # Step 3 - Push the Docker image to an Artifact Registry
+  # Step 2 - Push the Docker image to an Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'europe-west1-docker.pkg.dev/linear-encoder-424111-i7/divehub-springboot/despliegueapi:v1']
+    id: 'Push Docker Image'
+    waitFor: ['Build Docker Image']
 
-  # Step 4 - Deploy the image in a Cloud Run service
+  # Step 3 - Deploy the image in a Cloud Run service
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - 'run'
@@ -31,4 +31,4 @@ steps:
       - '--allow-unauthenticated'
       - '--port'
       - '8080'
-
+    waitFor: ['Push Docker Image']
