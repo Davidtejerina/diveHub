@@ -1,6 +1,29 @@
 steps:
-  - name: 'gcr.io/cloud-builders/mvn'
-    args: ['install']
+  # Step 0 - Build the docker image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '--tag=gcr.io/$PROJECT_ID/spring-boot', '.']
-images: ['gcr.io/$PROJECT_ID/spring-boot']
+    args: ['build', '-t', 'europe-west1-docker.pkg.dev/just-amp-373710/divehub-springboot/despliegueapi:v1', '.']
+
+  # Step 1 - Run unit tests inside the docker container
+  - name: 'europe-west1-docker.pkg.dev/just-amp-373710/divehub-springboot/despliegueapi:v1'
+    entrypoint: java
+    args: ["-jar", "your-app-tests.jar"]
+
+  # Step 2 - Push the docker image to an Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'europe-west1-docker.pkg.dev/just-amp-373710/divehub-springboot/despliegueapi:v1']
+
+  # Step 3 - Deploy the image in a Cloud Run service
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'cloudrunservice'
+      - '--image'
+      - 'europe-west1-docker.pkg.dev/just-amp-373710/divehub-springboot/despliegueapi:v1'
+      - '--region'
+      - 'europe-west1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--port'
+      - '8080'
