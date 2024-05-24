@@ -1,34 +1,24 @@
 steps:
-  # Step 0 - Build the Maven project to generate the JAR file
-  - name: 'gcr.io/cloud-builders/mvn'
-    args: ['clean', 'package']
-    id: 'Maven Build'
-
-  # Step 1 - Build the Docker image
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'europe-west1-docker.pkg.dev/linear-encoder-424111-i7/divehub-springboot/despliegueapi:v1', '.']
-    id: 'Build Docker Image'
-    waitFor: ['Maven Build']
-
-  # Step 2 - Push the Docker image to an Artifact Registry
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'europe-west1-docker.pkg.dev/linear-encoder-424111-i7/divehub-springboot/despliegueapi:v1']
-    id: 'Push Docker Image'
-    waitFor: ['Build Docker Image']
-
-  # Step 3 - Deploy the image in a Cloud Run service
-  - name: 'gcr.io/cloud-builders/gcloud'
+# Step 0
+  - id: 'Build Docker Image'
+    name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'sh'
     args:
-      - 'run'
-      - 'deploy'
-      - 'cloudrunservice'
-      - '--image'
-      - 'europe-west1-docker.pkg.dev/linear-encoder-424111-i7/divehub-springboot/despliegueapi:v1'
-      - '--region'
-      - 'europe-west1'
-      - '--platform'
-      - 'managed'
-      - '--allow-unauthenticated'
-      - '--port'
-      - '8080'
-    waitFor: ['Push Docker Image']
+      - '-c'
+      - |
+          docker build -t europe-west1-docker.pkg.dev/linear-encoder-424111-i7/divehub:$COMMIT_SHA .
+          docker push europe-west1-docker.pkg.dev/linear-encoder-424111-i7/divehub:$COMMIT_SHA
+
+
+  # Step 2 - Deploy the image in a Cloud Run service
+  - id: 'Deploy Cloud Run'
+    name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - '-c'
+      - |
+          gcloud run deploy divehub \
+          --image=europe-west1-docker.pkg.dev/linear-encoder-424111-i7/divehub:$COMMIT_SHA \
+          --region=europe-west1 \
+          --platform=managed \
+          --port=8080 \
+          --project=divehub
