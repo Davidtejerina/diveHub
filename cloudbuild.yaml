@@ -7,7 +7,7 @@ steps:
       - '-c'
       - |
           docker build -t europe-west1-docker.pkg.dev/linear-encoder-424111-i7/divehub:$COMMIT_SHA .
-          docker push europe-west1-docker.pkg.dev/linear-encoder-424111-i7/divehub:$COMMIT_SHA
+          docker push europe-west1-docker.pkg.dev/linear-encoder-424111-i7/cloud-run-source-deploy/divehub/divehub:$COMMIT_SHA
 
 
   # Step 2 - Deploy the image in a Cloud Run service
