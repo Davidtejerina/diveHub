@@ -11,14 +11,19 @@ steps:
 
 
   # Step 2 - Deploy the image in a Cloud Run service
-  - id: 'Deploy Cloud Run'
-    name: 'gcr.io/cloud-builders/gcloud'
+
+  - name: 'gcr.io/cloud-builders/gcloud'
     args:
-      - '-c'
-      - |
-          gcloud run deploy divehub \
-          --image=europe-west1-docker.pkg.dev/linear-encoder-424111-i7/api/divehub:$COMMIT_SHA \
-          --region=europe-west1 \
-          --platform=managed \
-          --port=8080 \
-          --project=divehub
+        - 'run'
+        - 'deploy'
+        - 'divehub'
+        - '--image'
+        - 'europe-west1-docker.pkg.dev/linear-encoder-424111-i7/api/divehub:$COMMIT_SHA'
+        - '--region'
+        - 'europe-west1'
+        - '--platform'
+        - 'managed'
+        - '--port'
+        - '8080'
+        - '--allow-unauthenticated'
+
