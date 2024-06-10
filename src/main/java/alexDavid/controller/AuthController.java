@@ -31,13 +31,13 @@ public class AuthController {
                 loginRequest.getPassword()
         ));
         userDetailsService.updateLogin(loginRequest.getEmail());
-        return ResponseEntity.ok(Map.of("token", jwtService.createToken(loginRequest.getEmail())));
+        return ResponseEntity.ok(Map.of("token", jwtService.createToken(loginRequest.getEmail()), "userEmail", loginRequest.getEmail()));
     }
 
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody SignupRequest signupRequest) {
         if(userDetailsService.existUser(signupRequest.getEmail())) return ResponseEntity.badRequest().build();
         User user= userDetailsService.create(signupRequest);
-        return ResponseEntity.ok(Map.of("token", jwtService.createToken(user.getEmail())));
+        return ResponseEntity.ok(Map.of("token", jwtService.createToken(user.getEmail()), "userEmail", signupRequest.getEmail()));
     }
 }
